@@ -17,15 +17,14 @@ export default function Sidebar() {
 
                 <Image className="mx-auto" src="/SH-logo.svg" height={106} width={193} alt="horizontal pattern"/>
 
-                {/* Middle line-diamonds */}
-                <div className="flex flex-row justify-between w-full my-2">
+                <div className="flex flex-row justify-between w-full my-2 pt-8 pb-8">
                     <Image src="/line-diamond.svg" height={16} width={138} alt="horizontal pattern"/>
                     <Image src="/line-diamond.svg" height={16} width={138} alt="horizontal pattern"
                            className="rotate-180"/>
                 </div>
 
 
-                <div className="mx-auto">
+                <div className="flex flex-col gap-4">
                     <p className="text-center italic font-bold text-[15px] leading-normal text-[#F1ECEB]">
                         Your 24-Hour Creative Sandbox
                     </p>

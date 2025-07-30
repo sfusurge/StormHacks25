@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Sidebar from "@/components/Sidebar";
+import Frame from "@/components/Frame";
+import Controls from "@/components/Controls";
 
 export default function Home() {
     return (
@@ -19,8 +21,16 @@ export default function Home() {
                 rotate-45
                 origin-center"
             />
-            <div className="relative z-10">
+            <div className="relative z-10 flex flex-row h-screen">
                 <Sidebar/>
+                <div className="flex-1 flex flex-col">
+                    <div className="flex-1 flex items-center justify-center">
+                        <Frame/>
+                    </div>
+                    <div className="flex justify-center pb-8">
+                        <Controls/>
+                    </div>
+                </div>
             </div>
         </div>
     );
