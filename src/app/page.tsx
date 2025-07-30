@@ -1,3 +1,5 @@
+'use client';
+
 import Image from "next/image";
 import Sidebar from "@/components/Sidebar";
 import Frame from "@/components/Frame";
@@ -9,12 +11,12 @@ export default function Home() {
     return (
         <div className="font-catriel min-h-screen w-full relative overflow-hidden bg-[#0C0C0B]">
             {/*grain effect*/}
-            <Image src="/anim-background.gif" height={10} width={272} alt="horizontal pattern"
+            <Image src="/assets/anim-background.gif" height={10} width={272} alt="horizontal pattern"
                    className="absolute z-20 w-full h-full object-cover pointer-events-none mix-blend-color-dodge"
             />
             {/*background tiling*/}
             <div className="absolute z-0
-                bg-[url('/pattern-element-buffer.svg')]
+                bg-[url('/assets/pattern-element-buffer.svg')]
                 bg-[length:82.5px_82.5px]
                 bg-center
                 bg-repeat
@@ -34,7 +36,7 @@ export default function Home() {
                     <div className="flex-1 flex items-center justify-center">
                         <Frame/>
                     </div>
-                    <div className="flex justify-center pb-8">
+                    <div className="flex justify-center pb-4">
                         <Controls/>
                     </div>
                 </div>
