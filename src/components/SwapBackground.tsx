@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function Timer() {
+export default function SwapBackground() {
     return (
         <div className="mt-auto mb-8 relative border border-[#574E49] bg-[#161414D9]/85 w-[181px] h-[43px]">
             <div className="flex justify-between h-full">

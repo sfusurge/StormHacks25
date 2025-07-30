@@ -2,6 +2,8 @@ import Image from "next/image";
 import Sidebar from "@/components/Sidebar";
 import Frame from "@/components/Frame";
 import Controls from "@/components/Controls";
+import Timer from "@/components/Timer";
+import SwapBackground from "@/components/SwapBackground";
 
 export default function Home() {
     return (
@@ -24,6 +26,11 @@ export default function Home() {
             <div className="relative z-30 flex flex-row h-screen">
                 <Sidebar/>
                 <div className="flex-1 flex flex-col">
+                    <div className="flex justify-between items-start pt-8 px-8">
+                        <Timer/>
+                        <SwapBackground/>
+                    </div>
+
                     <div className="flex-1 flex items-center justify-center">
                         <Frame/>
                     </div>
