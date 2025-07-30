@@ -5,7 +5,7 @@ import Controls from "@/components/Controls";
 
 export default function Home() {
     return (
-        <div className="-z-10 font-catriel min-h-screen w-full relative overflow-hidden bg-[#0C0C0B]">
+        <div className="font-catriel min-h-screen w-full relative overflow-hidden bg-[#0C0C0B]">
             {/*grain effect*/}
             <Image src="/anim-background.gif" height={10} width={272} alt="horizontal pattern"
                    className="absolute z-20 w-full h-full object-cover pointer-events-none mix-blend-color-dodge"
@@ -21,7 +21,7 @@ export default function Home() {
                 rotate-45
                 origin-center"
             />
-            <div className="relative z-10 flex flex-row h-screen">
+            <div className="relative z-30 flex flex-row h-screen">
                 <Sidebar/>
                 <div className="flex-1 flex flex-col">
                     <div className="flex-1 flex items-center justify-center">
