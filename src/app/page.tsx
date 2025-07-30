@@ -1,11 +1,27 @@
 import Image from "next/image";
+import Sidebar from "@/components/Sidebar";
 
 export default function Home() {
-  return (
-      <div className="page">
-        <p className={"font-catriel"}>
-          hello
-        </p>
-      </div>
-  );
+    return (
+        <div className="-z-10 font-catriel min-h-screen w-full relative overflow-hidden bg-[#0C0C0B]">
+            {/*grain effect*/}
+            <Image src="/anim-background.gif" height={10} width={272} alt="horizontal pattern"
+                   className="absolute z-20 w-full h-full object-cover pointer-events-none mix-blend-color-dodge"
+            />
+            {/*background tiling*/}
+            <div className="absolute z-0
+                bg-[url('/pattern-element-buffer.svg')]
+                bg-[length:82.5px_82.5px]
+                bg-center
+                bg-repeat
+                w-[200%] h-[200%]
+                left-[-50%] top-[-50%]
+                rotate-45
+                origin-center"
+            />
+            <div className="relative z-10">
+                <Sidebar/>
+            </div>
+        </div>
+    );
 }
