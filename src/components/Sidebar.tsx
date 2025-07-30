@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Socials from "@/components/Socials";
+import EmailSignUp from "@/components/EmailSignUp";
 
 export default function Sidebar() {
     return (
@@ -34,6 +35,8 @@ export default function Sidebar() {
                         reality.
                     </p>
                 </div>
+
+                <EmailSignUp/>
 
             </div>
 

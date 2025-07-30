@@ -11,6 +11,12 @@ export default function SwapBackground() {
                 >
                     Swap Background
                 </button>
+
+                <button
+                    className="cursor-pointer"
+                >
+                    <Image src={'/assets/moon.svg'} alt={"mode"} width={22} height={22}/>
+                </button>
                 <div
                     className="h-[43px] w-[11px] [background-image:url('/assets/block-pattern-vertical.svg')] bg-repeat-y rotate-180"/>
             </div>

@@ -12,10 +12,10 @@ export default function Home() {
         <div className="font-catriel min-h-screen w-full relative overflow-hidden bg-[#0C0C0B]">
             {/*grain effect*/}
             <Image src="/assets/anim-background.gif" height={10} width={272} alt="horizontal pattern"
-                   className="absolute z-20 w-full h-full object-cover pointer-events-none mix-blend-color-dodge"
+                   className="absolute z-40 w-full h-full object-cover pointer-events-none mix-blend-color-dodge"
             />
             {/*background tiling*/}
-            <div className="absolute z-0
+            <div className="absolute z-10
                 bg-[url('/assets/pattern-element-buffer.svg')]
                 bg-[length:82.5px_82.5px]
                 bg-center
