@@ -1,4 +1,4 @@
-const musicLibrary = [
+export const musicLibrary = [
     //Ambiance
     { title: "Heavy Rain", artist: "Ambience", file: "/audio/Ambiance/heavy_rain.mp3" },
     { title: "Light Rain", artist: "Ambience", file: "/audio/Ambiance/light_rain.mp3" },
@@ -57,4 +57,17 @@ const musicLibrary = [
     { title: "Blue", artist: "yung kai", file: "/audio/Special Music/yung_kai_blue.mp3" },
 ];
 
-export default musicLibrary;
+const ambianceLibrary = [
+    //Ambiance
+    { title: "Heavy Rain", artist: "Ambience", file: "/audio/Ambiance/heavy_rain.mp3" },
+    { title: "Light Rain", artist: "Ambience", file: "/audio/Ambiance/light_rain.mp3" },
+    { title: "Raining on Multiple Surfaces (Mix)", artist: "Ambience", file: "/audio/Ambiance/raining_on_multiple_surfaces_mix.mp3" },
+    { title: "Gentle Ocean Waves", artist: "Ambience", file: "/audio/Ambiance/gentle_ocean_waves.mp3" },
+    { title: "Gentle Ocean Waves with Birdsong & Gulls", artist: "Ambience", file: "/audio/Ambiance/gentle_ocean_waves_birdsong_and_gull.mp3" },
+    { title: "Ocean Waves", artist: "Ambience", file: "/audio/Ambiance/ocean_waves.mp3" },
+    { title: "Burning Fireplace (Crackling Fire)", artist: "Ambience", file: "/audio/Ambiance/burning_fireplace_crackling_fire.mp3" },
+    { title: "Nighttime Outdoor Fireplace", artist: "Ambience", file: "/audio/Ambiance/nighttime_outdoor_fireplace.mp3" },
+    { title: "Coffee Shop Ambience", artist: "Ambience", file: "/audio/Ambiance/cofee_shop_ambience.mp3" }, // filename kept as-is
+    { title: "Museum Café", artist: "Ambience", file: "/audio/Ambiance/museum_cafe.mp3" },
+];
+
