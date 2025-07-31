@@ -2,14 +2,14 @@
 
 import Image from "next/image"
 import { useState, useRef, useEffect } from "react"
-import {musicLibrary} from "@/audioLibrary"
+import {calmMusicLibrary, epicMusicLibrary, specialMusicLibrary} from "@/audioLibrary"
 
 export default function Controls() {
     const [currentTrackIndex, setCurrentTrackIndex] = useState(0)
     const [isPlaying, setIsPlaying] = useState(false)
     const audioRef = useRef<HTMLAudioElement>(null)
 
-    const currentTrack = musicLibrary[currentTrackIndex]
+    const currentTrack = calmMusicLibrary[currentTrackIndex]
     const currentTitle = currentTrack.title
     const currentArtist = currentTrack.artist
 
@@ -46,12 +46,12 @@ export default function Controls() {
     }
 
     const playNext = () => {
-        const nextIndex = (currentTrackIndex + 1) % musicLibrary.length
+        const nextIndex = (currentTrackIndex + 1) % calmMusicLibrary.length
         setCurrentTrackIndex(nextIndex)
     }
 
     const playPrevious = () => {
-        const prevIndex = currentTrackIndex === 0 ? musicLibrary.length - 1 : currentTrackIndex - 1
+        const prevIndex = currentTrackIndex === 0 ? calmMusicLibrary.length - 1 : currentTrackIndex - 1
         setCurrentTrackIndex(prevIndex)
     }
 
