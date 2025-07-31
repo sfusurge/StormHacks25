@@ -46,12 +46,12 @@ export default function Controls() {
     }
 
     const playNext = () => {
-        const nextIndex = (currentTrackIndex + 1) % audioLibrary.length
+        const nextIndex = (currentTrackIndex + 1) % musicLibrary.length
         setCurrentTrackIndex(nextIndex)
     }
 
     const playPrevious = () => {
-        const prevIndex = currentTrackIndex === 0 ? audioLibrary.length - 1 : currentTrackIndex - 1
+        const prevIndex = currentTrackIndex === 0 ? musicLibrary.length - 1 : currentTrackIndex - 1
         setCurrentTrackIndex(prevIndex)
     }
 
