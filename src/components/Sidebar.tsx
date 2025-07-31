@@ -4,7 +4,7 @@ import EmailSignUp from "@/components/EmailSignUp";
 
 export default function Sidebar() {
     return (
-        <div className="p-4 flex flex-col w-[302px] h-screen border-r border-[#574E49] bg-[#161414D9]/85 justify-between items-center gap-4">
+        <div className="p-4 flex flex-col w-[302px] h-screen border-r border-[#574E49] bg-[#161414D9] justify-between items-center gap-4">
             <div className="w-full flex flex-col items-center">
                 <div className="w-[261px] flex items-center justify-center flex-col">
                     <div className="h-[11px] w-[261px] bg-[url('/assets/block-pattern.svg')] bg-repeat-x"/>

@@ -15,7 +15,7 @@ export default function Timer() {
     } = useTimer({ expiryTimestamp, autoStart: false });
 
     return (
-        <div className="mt-auto mb-8 relative border border-[#574E49] bg-[#161414D9]/85 w-[181px] h-[43px]">
+        <div className="mt-auto mb-8 relative border border-[#574E49] bg-[#161414D9] w-[181px] h-[43px]">
             <div className="flex justify-between items-center h-full">
                 <div className="h-[43px] w-[11px] [background-image:url('/assets/block-pattern-vertical.svg')] bg-repeat-y"/>
                 <div
