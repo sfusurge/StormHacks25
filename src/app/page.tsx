@@ -26,7 +26,9 @@ export default function Home() {
                 origin-center"
             />
             <div className="relative flex flex-row h-screen">
-                <Sidebar/>
+                <div className="z-20">
+                    <Sidebar/>
+                </div>
                 <div className=" flex-1 flex flex-col">
                     <div className="z-20 flex justify-between items-start pt-8 px-8">
                         <Timer/>
