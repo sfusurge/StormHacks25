@@ -32,14 +32,17 @@ export default function Home() {
                 <div className="sm:hidden w-full">
                     <div className="flex w-full px-5 py-5 italic justify-between leading-tight">
                         <div className="flex flex-col">
+                            {/* TODO: CHANGE TO JOTAI STATE */}
                             <p className="font-bold">Soft Spot</p>
                             <p className="text-primary">Keshi</p>
                         </div>
+                        {/* TODO: OPEN SETTINGS MODAL */}
                         <HoverEffectButton>
                             <Image src="/assets/settings.svg" height={40} width={40} alt="Open Settings Modal" />
                         </HoverEffectButton>
                     </div>
                     <div className="relative w-full h-full">
+                        {/* TODO: CHANGE TO JOTAI STATE */}
                         <Image
                             src="/backgrounds/background-1.png"
                             alt="background"

@@ -6,6 +6,7 @@ export default function Footer() {
     return (
         <footer className="sm:hidden w-full bg-[#161414D9] border-t border-accent mt-8 p-4">
             <div className="flex justify-between gap-8">
+                {/* TODO: USE MUSIC LIBRARY */}
                 <HoverEffectButton>
                     <Image src="/assets/music.svg" height={60} width={60} alt="Mute" />
                 </HoverEffectButton>
