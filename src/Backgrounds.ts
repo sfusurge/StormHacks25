@@ -1,0 +1,1 @@
+export const Backgrounds = ['/backgrounds/SparkyWrite.gif', "/backgrounds/fountain.gif", "/backgrounds/ScummuiusWrite.gif"]

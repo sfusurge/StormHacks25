@@ -6,8 +6,26 @@ import Frame from "@/components/Frame";
 import Controls from "@/components/Controls";
 import Timer from "@/components/Timer";
 import SwapBackground from "@/components/SwapBackground";
+import {useState} from "react";
+import {Backgrounds} from "@/Backgrounds";
 
 export default function Home() {
+    const [currentBackground, setCurrentBackground] = useState('/backgrounds/SparkyWrite.gif');
+    const [currentBackgroundIndex, setCurrentBackgroundIndex] = useState(0);
+
+    const onChangeBackground = () => {
+        if(currentBackgroundIndex < Backgrounds.length) {
+            setCurrentBackgroundIndex(currentBackgroundIndex + 1);
+            setCurrentBackground(Backgrounds[currentBackgroundIndex]);
+        }
+        else {
+            setCurrentBackgroundIndex(0);
+            setCurrentBackground(Backgrounds[0]);
+        }
+    }
+
+
+
     return (
         <div className="font-catriel min-h-screen w-full relative overflow-hidden bg-[#0C0C0B]">
             {/*grain effect*/}
@@ -32,11 +50,11 @@ export default function Home() {
                 <div className=" flex-1 flex flex-col">
                     <div className="z-20 flex justify-between items-start pt-8 px-8">
                         <Timer/>
-                        <SwapBackground/>
+                        <SwapBackground onChangeBackground={onChangeBackground}/>
                     </div>
 
                     <div className="z-40 flex-1 flex items-center justify-center">
-                        <Frame/>
+                        <Frame currentBackground={currentBackground}/>
                     </div>
                     <div className="z-20 flex justify-center pb-4">
                         <Controls/>
