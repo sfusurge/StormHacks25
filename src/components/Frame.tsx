@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function Frame() {
     return (
-        <div className="relative w-[872px] h-[511px]">
-            <div className="absolute inset-0 p-[25px]">
+        <div className="relative w-[643px] xl:w-[987px] h-[511px]">
+            <div className="absolute inset-0 p-[20px] xl:p-[25px]">
                 <div className="relative w-full h-full">
                     <Image
                         src="/backgrounds/background-1.png"
