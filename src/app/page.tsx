@@ -29,7 +29,8 @@ export default function Home() {
                    className="absolute z-30 w-full h-full object-cover pointer-events-none mix-blend-color-dodge"
             />
             {/*background tiling*/}
-            <div className="absolute z-10
+            <div
+                className="absolute z-10
                 bg-[url('/assets/pattern-element-buffer.svg')]
                 bg-[length:82.5px_82.5px]
                 bg-center
