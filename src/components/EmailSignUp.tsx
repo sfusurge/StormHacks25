@@ -53,9 +53,9 @@ export default function EmailSignup() {
     return (
         <form
             onSubmit={handleSubmit}
-            className="max-w-md mx-auto bg-[#06060599] border border-[#372F2F] p-4 flex items-center justify-between rounded-md mt-8"
+            className="max-w-md mx-auto bg-[#06060599] border border-[#372F2F] py-4 flex items-center justify-between rounded-md mt-8"
         >
-            <div className="relative w-5 h-5 mr-3">
+            <div className="relative left-2.5 w-5 h-5 mr-4">
                 <Image
                     src="/assets/mail.svg"
                     alt="frame"
@@ -70,12 +70,12 @@ export default function EmailSignup() {
                 value={email}
                 onChange={handleChange}
                 required
-                className="bg-transparent placeholder-[#8A6F6A] text-white focus:outline-none flex-grow"
+                className="bg-transparent pr-4 placeholder-[#8A6F6A] text-white focus:outline-none"
                 disabled={isLoading}
             />
             <button
                 type="submit"
-                className="relative w-10 h-5 border-[#8A6F6A] border-[0.735px] hover:opacity-80 transition-opacity duration-200"
+                className="relative right-2.5 w-10 h-5 border-[#8A6F6A] border-[0.735px] hover:opacity-80 transition-opacity duration-200"
                 disabled={isLoading}
             >
                 <Image
