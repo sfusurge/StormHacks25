@@ -8,6 +8,7 @@ import Timer from "@/components/Timer";
 import SwapBackground from "@/components/SwapBackground";
 import Footer from "@/components/Footer";
 import EmailSignUp from "@/components/EmailSignUp";
+import HoverEffectButton from "@/components/HoverEffectButton";
 export default function Home() {
     return (
         <div className="font-catriel min-h-screen w-full relative overflow-x-hidden sm:overflow-hidden bg-[#0C0C0B]">
@@ -29,14 +30,14 @@ export default function Home() {
             <div className="relative z-30 flex flex-col lg:flex-row h-screen">
                 <Sidebar />
                 <div className="sm:hidden w-full">
-                    <div className="flex w-full px-4 py-4 italic justify-between leading-tight">
+                    <div className="flex w-full px-5 py-5 italic justify-between leading-tight">
                         <div className="flex flex-col">
                             <p className="font-bold">Soft Spot</p>
                             <p className="text-primary">Keshi</p>
                         </div>
-                        <button>
-                            SETTINGS
-                        </button>
+                        <HoverEffectButton>
+                            <Image src="/assets/settings.svg" height={40} width={40} alt="Open Settings Modal" />
+                        </HoverEffectButton>
                     </div>
                     <div className="relative w-full h-full">
                         <Image
@@ -48,15 +49,15 @@ export default function Home() {
                         />
                     </div>
                 </div>
-                
-                <Footer/>
+
+                <Footer />
 
 
                 <div className="flex-1 sm:flex flex-col hidden">
                     <div className="flex justify-between items-start pt-8 px-8">
                         <Timer />
                         <div className="hidden sm:flex lg:hidden">
-                        <EmailSignUp/>
+                            <EmailSignUp />
                         </div>
                         <SwapBackground />
                     </div>

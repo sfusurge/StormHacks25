@@ -3,7 +3,6 @@
 import Image from "next/image"
 import { useState, useRef, useEffect } from "react"
 import {calmMusicLibrary, epicMusicLibrary, specialMusicLibrary} from "@/audioLibrary"
-import HoverSoundButton from "@/components/HoverEffectButton";
 import HoverEffectButton from "@/components/HoverEffectButton";
 
 export default function Controls() {
@@ -63,7 +62,7 @@ export default function Controls() {
     }
 
     return (
-        <div className="mt-auto mb-4 relative border border-[#574E49] bg-[#161414D9] sm:w-[80%] lg:w-[60%] h-[43px]">
+        <div className="mt-auto mb-4 relative border border-[#574E49] bg-[#161414D9]  md:w-[80%] xl:w-[50%] h-[43px]">
             <audio
                 ref={audioRef}
                 onEnded={handleAudioEnded}

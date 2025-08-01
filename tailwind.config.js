@@ -7,7 +7,8 @@ module.exports = {
         extend: {
             colors: {
                 primary: '#A7928E',
-                accent: '#574E49'
+                accent: '#574E49',
+                background: '#161414D9'
             },
             mixBlendMode: {
                 'color-dodge': 'color-dodge',
