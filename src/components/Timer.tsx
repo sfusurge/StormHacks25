@@ -9,6 +9,7 @@ import HoverEffectButton from "@/components/HoverEffectButton";
 export default function Timer() {
     const [isEditing, setIsEditing] = useState(false);
     const [inputValue, setInputValue] = useState("25:00");
+    const [paused, setPaused] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
 
     const parseTime = (str: string) => {
@@ -28,7 +29,7 @@ export default function Timer() {
         minutes,
         isRunning,
         start,
-        restart
+        restart,
     } = useTimer({
         expiryTimestamp,
         autoStart: false,
@@ -37,7 +38,19 @@ export default function Timer() {
 
     const handleEditComplete = () => {
         setIsEditing(false);
+        setPaused(false);
         restart(parseTime(inputValue), false);
+    };
+
+    const handleStartStop = () => {
+        if (isRunning && !paused) {
+            const timeLeft = new Date(Date.now() + minutes * 60 * 1000 + seconds * 1000);
+            restart(timeLeft, false);
+            setPaused(true);
+        } else {
+            start();
+            setPaused(false);
+        }
     };
 
     return (
@@ -62,7 +75,11 @@ export default function Timer() {
                             />
                         ) : (
                             <time
-                                className="text-[#8A6F6A] w-[48px] text-center text-xs cursor-pointer"
+                                className={`w-[48px] text-center text-xs cursor-pointer ${
+                                    isRunning && !paused
+                                        ? "text-[#F1ECEB] italic font-bold font-catriel text-[12px] leading-normal"
+                                        : "text-[#8A6F6A]"
+                                }`}
                                 onClick={() => setIsEditing(true)}
                             >
                                 {`${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`}
@@ -71,10 +88,11 @@ export default function Timer() {
                     </div>
 
                     <HoverEffectButton
-                        className="bg-[#06060599] px-2 py-1 text-xs text-[#8A6F6A] border border-[#8A6F6A] hover:border-[#F1ECEB] cursor-pointer h-[20px] w-[45px] flex items-center justify-center"
-                        onClick={start}
+                        className="bg-[#06060599] px-2 py-1 text-xs border-[0.643px] h-[20px] w-[45px] flex items-center justify-center cursor-pointer
+                            text-[#8A6F6A] border-[#8A6F6A] hover:border-[#F1ECEB] "
+                        onClick={handleStartStop}
                     >
-                        Start
+                        {isRunning && !paused ? "Stop" : "Start"}
                     </HoverEffectButton>
                 </div>
                 <div className="h-[43px] w-[11px] [background-image:url('/assets/block-pattern-vertical.svg')] bg-repeat-y rotate-180"/>

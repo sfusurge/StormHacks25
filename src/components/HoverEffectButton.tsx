@@ -7,7 +7,7 @@ const HoverEffectButton = ({children, onClick, className = ""}: Readonly<{ child
 
     return (
         <button
-            className={`cursor-pointer group relative hover:shadow-[0_0_7px_0_#8A6F6A] transition-all duration-300 ${className}`}
+            className={`cursor-pointer group relative transition-all duration-300 border-[0.643px] border-[#8A6F6A] hover:border-[#F1ECEB] hover:shadow-[0_0_7px_0_#8A6F6A] ${className}`}
             onMouseEnter={() => play()}
             onClick={onClick}>
 
