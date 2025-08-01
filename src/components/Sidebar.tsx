@@ -36,7 +36,7 @@ export default function Sidebar() {
                     </p>
                 </div>
 
-                <EmailSignUp/>
+                <EmailSignUp />
 
             </div>
 
