@@ -11,6 +11,7 @@ export default function Frame({ currentBackground }: FrameProps) {
                 <div className="absolute inset-0 p-[2.87%]">
                     <div className="relative w-full h-full">
                         <Image
+                            key={currentBackground}
                             src={currentBackground}
                             alt="background"
                             fill

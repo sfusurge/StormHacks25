@@ -17,17 +17,10 @@ export default function Home() {
     const [currentBackgroundIndex, setCurrentBackgroundIndex] = useState(0);
 
     const onChangeBackground = () => {
-        if(currentBackgroundIndex < Backgrounds.length) {
-            setCurrentBackgroundIndex(currentBackgroundIndex + 1);
-            setCurrentBackground(Backgrounds[currentBackgroundIndex]);
-        }
-        else {
-            setCurrentBackgroundIndex(0);
-            setCurrentBackground(Backgrounds[0]);
-        }
-    }
-
-
+        const nextIndex = (currentBackgroundIndex + 1) % Backgrounds.length;
+        setCurrentBackgroundIndex(nextIndex);
+        setCurrentBackground(Backgrounds[nextIndex]);
+    };
 
     return (
         <div className="font-catriel min-h-screen w-full relative overflow-x-hidden sm:overflow-hidden bg-[#0C0C0B]">
