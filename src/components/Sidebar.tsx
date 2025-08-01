@@ -23,24 +23,24 @@ export default function Sidebar() {
                         <Image src="/assets/line-diamond-v.svg" height={138} width={16} alt="vertical pattern"
                             className="rotate-180 w-4 h-full" />
                     </div>
-                    <div className="w-full flex md:hidden lg:flex xl:flex items-center px-4">
+                    <div className="w-full flex md:hidden lg:flex xl:flex items-center px-5">
                         <Image src="/assets/line-diamond.svg" className="flex-1" height={16} width={120} alt="horizontal pattern" />
                         <Image src="/assets/line-diamond.svg" height={16} width={120} alt="horizontal pattern" className="rotate-180 flex-1" />
                     </div>
 
 
                     <div className="flex flex-col gap-3 text-left">
-                        <p className=" italic font-bold text-lg xs:text-[15px] leading-normal px-4 text-[#F1ECEB]">
+                        <p className="italic font-bold text-xl md:text-[15px] leading-normal px-5 text-[#F1ECEB]">
                             Your 24-Hour Creative Sandbox
                         </p>
-                        <p className="italic font-normal text-[12px] text-pretty leading-normal w-full px-4 text-[#A7928E]">
+                        <p className="italic font-normal text-base sm:text-[12px] text-balance leading-normal w-full px-5 text-[#A7928E]">
                             Join us at SFU Burnaby Campus from October 4th to 5th for StormHacks 2025. This is Western
                             Canada’s biggest hackathon, a place where innovators like you can turn their visions into
                             reality.
                         </p>
                     </div>
 
-                    <div className="flex sm:hidden lg:flex px-4 mb-4">
+                    <div className="flex sm:hidden lg:flex px-5 mb-4">
                         <EmailSignUp />
                     </div>
                 </div>
