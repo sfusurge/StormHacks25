@@ -3,7 +3,7 @@ import useSound from 'use-sound';
 
 const HoverEffectButton = ({children, onClick, className = ""}: Readonly<{ children: React.ReactNode, onClick?: () => void , className?: string}>) => {
     const soundUrl = '/audio/sound-effects/button_hover.mp3';
-    const [play] = useSound(soundUrl, { volume: 0.1 });
+    const [play] = useSound(soundUrl, { volume: 0.01 });
 
     return (
         <button

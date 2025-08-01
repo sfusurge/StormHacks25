@@ -1,26 +1,32 @@
 import Image from "next/image";
 
-export default function Frame() {
+type FrameProps = {
+    currentBackground: string;
+};
+
+export default function Frame({ currentBackground }: FrameProps) {
     return (
-        <div className="relative w-[643px] xl:w-[987px] h-[511px]">
-            <div className="absolute inset-0 p-[20px] xl:p-[25px]">
-                <div className="relative w-full h-full">
+        <div className="w-full max-w-3/4 aspect-[872/511]">
+            <div className="relative w-full h-full">
+                <div className="absolute inset-0 p-[2.87%]">
+                    <div className="relative w-full h-full">
+                        <Image
+                            src={currentBackground}
+                            alt="background"
+                            fill
+                            className="object-contain"
+                        />
+                    </div>
+                </div>
+
+                <div className="absolute inset-0 pointer-events-none">
                     <Image
-                        src="/backgrounds/background-1.png"
-                        alt="background"
+                        src="/assets/frame.svg"
+                        alt="frame"
                         fill
                         className="object-contain"
                     />
                 </div>
-            </div>
-
-            <div className="absolute inset-0 pointer-events-none">
-                <Image
-                    src="/assets/frame.svg"
-                    alt="frame"
-                    fill
-                    className="object-contain"
-                />
             </div>
         </div>
     );
