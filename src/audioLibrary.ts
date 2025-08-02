@@ -1,4 +1,4 @@
-export const calmMusicLibrary = [
+export const calmMusicLibrary: MusicItem[] = [
     //Calm music
     { title: "Never Meant", artist: "American Football", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/american_football_never_meant.mp3" },
     { title: "Improvisation", artist: "Anthi Bozoviti", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/anthi_bozoviti_improvisation.mp3" },
@@ -22,7 +22,7 @@ export const calmMusicLibrary = [
     { title: "With You, Friends", artist: "Skrillex", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/skrillex_with_you_friends.mp3" },
 ];
 
-export const epicMusicLibrary = [
+export const epicMusicLibrary: MusicItem[] = [
     { title: "EPIC: The Musical – The Circe Saga", artist: "EPIC: The Musical", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Epic%20Music/epic_the_musical%20_the_circe_saga.mp3" },
     { title: "EPIC: The Musical – The Cyclops Saga", artist: "EPIC: The Musical", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Epic%20Music/epic_the_musical%20_the_cyclops_saga.mp3" },
     { title: "EPIC: The Musical – The Ithaca Saga", artist: "EPIC: The Musical", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Epic%20Music/epic_the_musical%20_the_ithaca_saga.mp3" },
@@ -34,7 +34,7 @@ export const epicMusicLibrary = [
     { title: "Apple Seed", artist: "Hiroyuki Sawano", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Epic%20Music/hiroyuki_sawano_apple_seed.mp3" }
 ]
 
-export const specialMusicLibrary = [
+export const specialMusicLibrary: MusicItem[] = [
     { title: "I NEED U", artist: "BTS", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Special%20Music/bts_i_need_u.mp3" },
     { title: "Minecraft", artist: "C418", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Special%20Music/c418_minecraft.mp3" },
     { title: "Cherry Wine", artist: "grentperez", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Special%20Music/grentperez_cherry_wine.mp3" },
@@ -47,7 +47,7 @@ export const specialMusicLibrary = [
     { title: "Blue", artist: "yung kai", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Special%20Music/yung_kai_blue.mp3" },
 ]
 
-export const ambianceLibrary = [
+export const ambianceLibrary: MusicItem[] = [
     //Ambiance
     { title: "Heavy Rain", artist: "Ambience", file: "/audio/Ambiance/heavy_rain.mp3" },
     { title: "Light Rain", artist: "Ambience", file: "/audio/Ambiance/light_rain.mp3" },
@@ -61,3 +61,9 @@ export const ambianceLibrary = [
     { title: "Museum Café", artist: "Ambience", file: "/audio/Ambiance/museum_cafe.mp3" },
 ];
 
+
+export interface MusicItem {
+    title: string,
+    artist: string,
+    file: string
+}

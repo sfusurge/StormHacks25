@@ -1,21 +1,48 @@
 "use client"
 
 import Image from "next/image"
-import { useState, useRef, useEffect } from "react"
-import {calmMusicLibrary, epicMusicLibrary, specialMusicLibrary} from "@/audioLibrary"
+import { useState, useRef, useEffect, useMemo } from "react"
+import { calmMusicLibrary, epicMusicLibrary, specialMusicLibrary, ambianceLibrary, type MusicItem } from "@/audioLibrary"
 import HoverEffectButton from "@/components/HoverEffectButton";
+import { atom, useAtom, useAtomValue } from "jotai";
+
+export const musicLibOptions = {
+    calm: calmMusicLibrary,
+    epic: epicMusicLibrary,
+    special: specialMusicLibrary,
+    ambiance: ambianceLibrary
+}
+
+
+function shuffleArr<T>(arr: T[]) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        arr[j], arr[i] = arr[i], arr[j];
+    }
+}
+
+const trackIndexAtom = atom(0);
+
+const _musicLibAtom = atom<MusicItem[]>(musicLibOptions.calm);
+const musicLibAtom = atom((get) => get(_musicLibAtom), (get, set, variant: keyof typeof musicLibOptions) => {
+    const newLib = musicLibOptions[variant];
+    shuffleArr(newLib);
+    set(_musicLibAtom, newLib);
+    set(trackIndexAtom, 0);
+})
+
 
 export default function Controls() {
-    const [currentTrackIndex, setCurrentTrackIndex] = useState(0)
+    const musicLib = useAtomValue(musicLibAtom);
+    const [currentTrackIndex, setCurrentTrackIndex] = useAtom(trackIndexAtom);
     const [isPlaying, setIsPlaying] = useState(false)
     const audioRef = useRef<HTMLAudioElement>(null)
 
-    const currentTrack = calmMusicLibrary[currentTrackIndex]
-    const currentTitle = currentTrack.title
-    const currentArtist = currentTrack.artist
+    const currentTrack = useMemo(() => musicLib[currentTrackIndex], [currentTrackIndex]);
+    const [currentTitle, currentArtist] = useMemo(() => [currentTrack.title, currentTrack.artist], [currentTrack]);
 
     useEffect(() => {
-        if (!audioRef.current){
+        if (!audioRef.current) {
             return;
         }
 
@@ -47,12 +74,12 @@ export default function Controls() {
     }
 
     const playNext = () => {
-        const nextIndex = (currentTrackIndex + 1) % calmMusicLibrary.length
+        const nextIndex = (currentTrackIndex + 1) % musicLib.length
         setCurrentTrackIndex(nextIndex)
     }
 
     const playPrevious = () => {
-        const prevIndex = currentTrackIndex === 0 ? calmMusicLibrary.length - 1 : currentTrackIndex - 1
+        const prevIndex = currentTrackIndex === 0 ? musicLib.length - 1 : currentTrackIndex - 1
         setCurrentTrackIndex(prevIndex)
     }
 
@@ -75,7 +102,7 @@ export default function Controls() {
                     <div className="flex items-center justify-center gap-4">
                         <div className="flex flex-row gap-2">
                             <HoverEffectButton className="self-center">
-                                <Image src="/assets/music.svg" height={24} width={24} alt="Play"/>
+                                <Image src="/assets/music.svg" height={24} width={24} alt="Play" />
                             </HoverEffectButton>
                             <div className="flex flex-col">
                                 <p className="text-[12px] text-[#F1ECEB]">{currentTitle}</p>
@@ -95,7 +122,7 @@ export default function Controls() {
                 <Image src="/assets/diamond.svg" height={14} width={8} alt="diamond" />
                 <div className="flex items-center justify-center gap-4">
                     <HoverEffectButton className="cursor-pointer" onClick={playPrevious}>
-                        <Image src="/assets/prev.svg" height={24} width={24} alt="Previous"/>
+                        <Image src="/assets/prev.svg" height={24} width={24} alt="Previous" />
                     </HoverEffectButton>
                     <HoverEffectButton className="cursor-pointer" onClick={togglePlayPause}>
                         <Image
@@ -106,10 +133,10 @@ export default function Controls() {
                         />
                     </HoverEffectButton>
                     <HoverEffectButton className="cursor-pointer" onClick={playNext}>
-                        <Image src="/assets/next.svg" height={24} width={24} alt="Next"/>
+                        <Image src="/assets/next.svg" height={24} width={24} alt="Next" />
                     </HoverEffectButton>
                 </div>
-                <Image src="/assets/diamond.svg" height={14} width={8} alt="diamond"/>
+                <Image src="/assets/diamond.svg" height={14} width={8} alt="diamond" />
             </div>
         </div>
     )

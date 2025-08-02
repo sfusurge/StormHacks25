@@ -4,11 +4,12 @@
     display: flex;
     gap: 0.1rem;
     font-size: 0.75rem;
-}
-.timeInputField {
     color: var(--text-color);
     text-align: center;
     background-color: transparent;
+}
+.timeInputField {
+    
     border: none;
     outline: none;
 
@@ -28,3 +29,8 @@
 }
 
 
+.timeInputContainer:has(input:focus) {
+    color: var(--text-highlight);
+    font-weight: bold;
+    font-style: italic;
+}

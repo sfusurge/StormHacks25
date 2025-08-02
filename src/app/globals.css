@@ -26,6 +26,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 
   --text-color: #8A6F6A;
+  --text-highlight: #F1ECEB;
   color: var(--text-color);
 }
 
+img {
+  pointer-events: none;
+}
