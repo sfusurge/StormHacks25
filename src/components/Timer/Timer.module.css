@@ -1,0 +1,33 @@
+.timeInputContainer {
+    display: flex;
+    gap: 0.1rem;
+    font-size: 0.75rem;
+    color: var(--color-hover-button);
+    text-align: center;
+    background-color: transparent;
+}
+.timeInputField {
+    border: none;
+    outline: none;
+
+    /* hide native input spinner */
+    appearance: none;
+    -moz-appearance: textfield;
+
+    width: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.timeInputField::-webkit-inner-spin-button,
+.timeInputField::-webkit-outer-spin-button {
+    /* hide native input spinner */
+    -webkit-appearance: none;
+}
+
+.timeInputContainer:has(input:focus) {
+    color: var(--color-main);
+    font-weight: bold;
+    font-style: italic;
+}
+

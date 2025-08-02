@@ -1,25 +1,61 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import {
     calmMusicLibrary,
     epicMusicLibrary,
     specialMusicLibrary,
+    ambianceLibrary,
+    type MusicItem,
 } from '@/audioLibrary';
 import HoverEffectButton from '@/components/HoverEffectButton';
-import { Diamond } from './svgs/Diamond';
 import { useTheme } from './ThemeProvider';
+import { atom, useAtom, useAtomValue } from 'jotai';
 import { BlockPatternVertical } from './svgs/BlockPatternVertival';
+import { Diamond } from './svgs/Diamond';
+
+const trackIndexAtom = atom(0);
+
+export const musicLibOptions = {
+    calm: calmMusicLibrary,
+    epic: epicMusicLibrary,
+    special: specialMusicLibrary,
+    ambiance: ambianceLibrary,
+};
+
+function shuffleArr<T>(arr: T[]) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        (arr[j], (arr[i] = arr[i]), arr[j]);
+    }
+}
+
+const _musicLibAtom = atom<MusicItem[]>(musicLibOptions.calm);
+const musicLibAtom = atom(
+    (get) => get(_musicLibAtom),
+    (get, set, variant: keyof typeof musicLibOptions) => {
+        const newLib = musicLibOptions[variant];
+        shuffleArr(newLib);
+        set(_musicLibAtom, newLib);
+        set(trackIndexAtom, 0);
+    },
+);
 
 export default function Controls() {
-    const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
+    const musicLib = useAtomValue(musicLibAtom);
+    const [currentTrackIndex, setCurrentTrackIndex] = useAtom(trackIndexAtom);
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef<HTMLAudioElement>(null);
 
-    const currentTrack = calmMusicLibrary[currentTrackIndex];
-    const currentTitle = currentTrack.title;
-    const currentArtist = currentTrack.artist;
+    const currentTrack = useMemo(
+        () => musicLib[currentTrackIndex],
+        [currentTrackIndex],
+    );
+    const [currentTitle, currentArtist] = useMemo(
+        () => [currentTrack.title, currentTrack.artist],
+        [currentTrack],
+    );
 
     const { mode } = useTheme();
 
@@ -53,14 +89,14 @@ export default function Controls() {
     };
 
     const playNext = () => {
-        const nextIndex = (currentTrackIndex + 1) % calmMusicLibrary.length;
+        const nextIndex = (currentTrackIndex + 1) % musicLib.length;
         setCurrentTrackIndex(nextIndex);
     };
 
     const playPrevious = () => {
         const prevIndex =
             currentTrackIndex === 0
-                ? calmMusicLibrary.length - 1
+                ? musicLib.length - 1
                 : currentTrackIndex - 1;
         setCurrentTrackIndex(prevIndex);
     };
