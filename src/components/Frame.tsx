@@ -1,10 +1,13 @@
-import Image from "next/image";
+import Image from 'next/image';
+import { useTheme } from './ThemeProvider';
 
 type FrameProps = {
     currentBackground: string;
 };
 
 export default function Frame({ currentBackground }: FrameProps) {
+    const { mode } = useTheme();
+
     return (
         <div className="w-full max-w-3/4 aspect-[872/511]">
             <div className="relative w-full h-full">
@@ -22,7 +25,7 @@ export default function Frame({ currentBackground }: FrameProps) {
 
                 <div className="absolute inset-0 pointer-events-none">
                     <Image
-                        src="/assets/frame.svg"
+                        src={`/assets/frame-${mode}.svg`}
                         alt="frame"
                         fill
                         className="object-contain"

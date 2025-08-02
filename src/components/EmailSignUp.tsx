@@ -1,11 +1,14 @@
 import Image from 'next/image';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { toast } from 'sonner';
+import { useTheme } from './ThemeProvider';
 
 export default function EmailSignup() {
     const [email, setEmail] = useState('');
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [success, setSuccess] = useState<boolean | null>(null);
+
+    const { mode } = useTheme();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -20,7 +23,6 @@ export default function EmailSignup() {
             console.log(res);
 
             if (res.status === 200) {
-                // clear email
                 setEmail('');
                 setSuccess(true);
             } else {
@@ -53,14 +55,14 @@ export default function EmailSignup() {
     return (
         <form
             onSubmit={handleSubmit}
-            className="max-w-md mx-auto bg-[#06060599] border border-[#372F2F] py-4 flex items-center justify-between rounded-md mt-8"
+            className="max-w-md mx-auto bg-[#06060599] border border-border py-4 flex items-center justify-between rounded-md mt-8"
         >
             <div className="relative left-2.5 w-5 h-5 mr-4">
                 <Image
-                    src="/assets/mail.svg"
+                    src={`/assets/mail-${mode}.svg`}
                     alt="frame"
                     fill
-                    className="object-contain stroke-[#8A6F6A] stroke-1"
+                    className="object-contain"
                 />
             </div>
             <input
@@ -70,16 +72,16 @@ export default function EmailSignup() {
                 value={email}
                 onChange={handleChange}
                 required
-                className="bg-transparent pr-4 placeholder-[#8A6F6A] text-white focus:outline-none"
+                className="bg-transparent pr-4 placeholder-primary text-white focus:outline-none"
                 disabled={isLoading}
             />
             <button
                 type="submit"
-                className="relative right-2.5 w-10 h-5 border-[#8A6F6A] border-[0.735px] hover:opacity-80 transition-opacity duration-200"
+                className="relative right-2.5 w-10 h-5 border-border border-[0.735px] hover:opacity-80 transition-opacity duration-200"
                 disabled={isLoading}
             >
                 <Image
-                    src="/assets/submit.svg"
+                    src={`/assets/submit-${mode}.svg`}
                     alt="arrow"
                     fill
                     className="object-contain"

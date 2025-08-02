@@ -1,20 +1,17 @@
-
-
 .timeInputContainer {
     display: flex;
     gap: 0.1rem;
     font-size: 0.75rem;
-    color: var(--text-color);
+    color: var(--color-hover-button);
     text-align: center;
     background-color: transparent;
 }
 .timeInputField {
-    
     border: none;
     outline: none;
 
     /* hide native input spinner */
-    appearance: none; 
+    appearance: none;
     -moz-appearance: textfield;
 
     width: 20px;
@@ -28,9 +25,9 @@
     -webkit-appearance: none;
 }
 
-
 .timeInputContainer:has(input:focus) {
-    color: var(--text-highlight);
+    color: var(--color-main);
     font-weight: bold;
     font-style: italic;
 }
+
