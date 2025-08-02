@@ -1,21 +1,24 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import useSound from 'use-sound';
 
 const HoverEffectButton = ({
     children,
     onClick,
     className = '',
+    style
 }: Readonly<{
     children: React.ReactNode;
     onClick?: () => void;
     className?: string;
+    style?:CSSProperties
 }>) => {
     const soundUrl = '/audio/sound-effects/button_hover.mp3';
     const [play] = useSound(soundUrl, { volume: 0.01 });
 
     return (
         <button
-            className={`cursor-pointer group relative transition-all duration-300 border-[0.643px] border-hover-button hover:border-main hover:shadow-[0_0_7px_0_var(--color-hover-button)] ${className}`}
+        style={{...style}}
+            className={`cursor-pointer group relative transition-all duration-300 border-[0.643px] border-decor hover:border-main hover:shadow-[0_0_7px_0_var(--color-decor)] ${className}`}
             onMouseEnter={() => play()}
             onClick={onClick}
         >

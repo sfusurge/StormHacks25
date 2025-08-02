@@ -2,7 +2,7 @@
     display: flex;
     gap: 0.1rem;
     font-size: 0.75rem;
-    color: var(--color-hover-button);
+    color: var(--color-decor);
     text-align: center;
     background-color: transparent;
 }

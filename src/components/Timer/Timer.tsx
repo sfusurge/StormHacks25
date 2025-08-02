@@ -138,7 +138,7 @@ export default function Timer() {
                             setPaused(!paused);
                         }}
                         className="bg-[#06060599] px-2 py-1 text-xs border-[0.643px] h-[20px] w-[45px] flex items-center justify-center cursor-pointer
-                            text-hover-button border-hover-button hover:border-main "
+                            text-decor border-decor hover:border-main "
                     >
                         {paused ? 'Start' : 'Stop'}
                     </HoverEffectButton>

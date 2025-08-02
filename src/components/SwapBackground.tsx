@@ -16,7 +16,7 @@ export default function SwapBackground({
             <div className="flex justify-between items-center h-full">
                 <div className="h-[43px] w-[11px] [background-image:url('/assets/block-pattern-vertical.svg')] bg-repeat-y" />
                 <HoverEffectButton
-                    className="bg-[#06060599] px-2 py-1 text-xs text-hover-button border-[0.643px] border-hover-button cursor-pointer h-[22px] w-[118px] flex items-center justify-center"
+                    className="bg-[#06060599] px-2 py-1 text-xs text-decor border-[0.643px] border-decor cursor-pointer h-[22px] w-[118px] flex items-center justify-center"
                     onClick={onChangeBackground}
                 >
                     Swap Background

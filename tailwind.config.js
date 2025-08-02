@@ -9,7 +9,7 @@ module.exports = {
                 accent: 'var(--color-accent)',
                 background: 'var(--color-background)',
                 border: 'var(--color-border)',
-                'hover-button': 'var(--color-hover-button)',
+                'decor': 'var(--color-decor)',
             },
             mixBlendMode: {
                 'color-dodge': 'color-dodge',

@@ -14,6 +14,8 @@ import { useTheme } from './ThemeProvider';
 import { atom, useAtom, useAtomValue } from 'jotai';
 import { BlockPatternVertical } from './svgs/BlockPatternVertival';
 import { Diamond } from './svgs/Diamond';
+import { MusicTypeSelectorDialog } from '@/components/MusicTypeSelectorDialog';
+import { AmbianceDialog, masterVolumnAtom } from '@/components/AmbianceDialog/AmbianceDialog';
 
 const trackIndexAtom = atom(0);
 
@@ -25,14 +27,15 @@ export const musicLibOptions = {
 };
 
 function shuffleArr<T>(arr: T[]) {
-    for (let i = arr.length - 1; i > 0; i--) {
+    for (let i = arr.length - 1; i > -1; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        (arr[j], (arr[i] = arr[i]), arr[j]);
+        [arr[j], arr[i]] = [arr[i], arr[j]];
     }
+    return arr;
 }
 
-const _musicLibAtom = atom<MusicItem[]>(musicLibOptions.calm);
-const musicLibAtom = atom(
+const _musicLibAtom = atom<MusicItem[]>(shuffleArr(musicLibOptions.calm));
+export const musicLibAtom = atom(
     (get) => get(_musicLibAtom),
     (get, set, variant: keyof typeof musicLibOptions) => {
         const newLib = musicLibOptions[variant];
@@ -48,9 +51,11 @@ export default function Controls() {
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef<HTMLAudioElement>(null);
 
+    const masterVolume = useAtomValue(masterVolumnAtom);
+
     const currentTrack = useMemo(
         () => musicLib[currentTrackIndex],
-        [currentTrackIndex],
+        [currentTrackIndex, musicLib],
     );
     const [currentTitle, currentArtist] = useMemo(
         () => [currentTrack.title, currentTrack.artist],
@@ -76,6 +81,12 @@ export default function Controls() {
             setIsPlaying(true);
         }
     }, [currentTrack.file, currentTrackIndex]);
+
+    useEffect(() => {
+        if (audioRef.current) {
+            audioRef.current.volume = masterVolume;
+        }
+    }, [masterVolume])
 
     const togglePlayPause = () => {
         if (audioRef.current) {
@@ -106,6 +117,10 @@ export default function Controls() {
         playNext();
     };
 
+    const [showMusicSelector, setShowMusicSelector] = useState(false);
+    const [showAmbianceMenu, setShowAmbianceMenu] = useState(false);
+
+
     return (
         <div className="mt-auto mb-4 relative border border-accent bg-[#161414D9]  md:w-[80%] xl:w-[50%] h-[43px]">
             <audio
@@ -120,14 +135,28 @@ export default function Controls() {
                     <BlockPatternVertical />
                     <div className="flex items-center justify-center gap-4">
                         <div className="flex flex-row gap-2">
-                            <HoverEffectButton className="self-center">
-                                <Image
-                                    src={`/assets/music-${mode}.svg`}
-                                    height={24}
-                                    width={24}
-                                    alt="Play"
-                                />
-                            </HoverEffectButton>
+
+                            <div className="self-center relative flex">
+                                <HoverEffectButton onClick={() => {
+                                    setShowMusicSelector(true);
+                                }}>
+
+                                    <Image
+                                        src={`/assets/music-${mode}.svg`}
+                                        height={24}
+                                        width={24}
+                                        alt="Play"
+                                    />
+                                </HoverEffectButton>
+                                {showMusicSelector &&
+                                    <MusicTypeSelectorDialog
+                                        onClose={() => {
+                                            setShowMusicSelector(false);
+                                        }}
+                                    />
+                                }
+                            </div>
+
                             <div className="flex flex-col">
                                 <p className="text-[12px] text-main font-bold">
                                     {currentTitle}
@@ -140,14 +169,24 @@ export default function Controls() {
                     </div>
                 </div>
                 <div className="flex flex-row gap-2">
-                    <HoverEffectButton className="self-center">
-                        <Image
-                            src={`/assets/sound-${mode}.svg`}
-                            height={24}
-                            width={24}
-                            alt="Sound"
-                        />
-                    </HoverEffectButton>
+                    <div className="self-center relative flex">
+                        {showAmbianceMenu &&
+                            <AmbianceDialog onClose={() => {
+                                setShowAmbianceMenu(false);
+                            }} />}
+                        <HoverEffectButton
+                            onClick={() => {
+                                setShowAmbianceMenu(true);
+                            }}
+                            className="self-center">
+                            <Image
+                                src={`/assets/sound-${mode}.svg`}
+                                height={24}
+                                width={24}
+                                alt="Sound"
+                            />
+                        </HoverEffectButton>
+                    </div>
                     <div className="h-[43px] w-[11px] [background-image:url('/assets/block-pattern-vertical.svg')] bg-repeat-y rotate-180" />
 
                     <BlockPatternVertical className="h-[43px] w-[11px] bg-repeat-y rotate-180" />

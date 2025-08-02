@@ -29,13 +29,13 @@ export default function Home() {
     return (
         <div className="font-catriel min-h-screen w-full relative overflow-x-hidden sm:overflow-hidden bg-[#0C0C0B]">
             {/*grain effect*/}
-            <Image
+            {/* <Image
                 src="/assets/anim-background.gif"
                 height={10}
                 width={272}
                 alt="horizontal pattern"
                 className="absolute z-30 w-full h-full object-cover pointer-events-none mix-blend-color-dodge"
-            />
+            /> */}
             {/*background tiling*/}
             <div
                 className="absolute z-10
