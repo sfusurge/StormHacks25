@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import { Toaster } from 'sonner';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 export const metadata: Metadata = {
     title: 'StormHacks 2025',
@@ -42,19 +43,22 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" data-mode="angel">
             <body className={`${catriel.variable} antialiased`}>
-                {children}
-                <Toaster
-                    position='top-center'
-                    toastOptions={{
-                        style: {
-                            backgroundColor: '#06060599',
-                            borderColor: '#372F2F',
-                            color: '#a7928e',
-                        },
-                    }}
-                />
+                <ThemeProvider>
+                    {children}
+                    <Toaster
+                        position="top-center"
+                        toastOptions={{
+                            style: {
+                                backgroundColor: '#06060599',
+                            },
+                            classNames: {
+                                toast: '!text-primary !border-border',
+                            },
+                        }}
+                    />
+                </ThemeProvider>
             </body>
         </html>
     );

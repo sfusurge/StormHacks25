@@ -1,35 +1,50 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @config '../../tailwind.config.js';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
+
+    --color-main: #f1eceb;
+    --color-primary: #a7928e;
+    --color-accent: #574e49;
+    --color-background: #161414d9;
+    --color-border: #372f2f;
+    --color-hover-button: #8a6f6a;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
 
-  --text-color: #8A6F6A;
-  --text-highlight: #F1ECEB;
-  color: var(--text-color);
+    --text-color: #8a6f6a;
+    --text-highlight: #f1eceb;
+    color: var(--text-color);
+}
+
+[data-mode='demon'] {
+    --color-main: #c11326;
+    --color-primary: #c11326;
+    --color-accent: #c11326;
+    --color-border: #c11326;
+    --color-hover-button: #c11326;
 }
 
 img {
-  pointer-events: none;
+    pointer-events: none;
 }
