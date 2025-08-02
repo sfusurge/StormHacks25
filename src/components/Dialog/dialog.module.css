@@ -1,0 +1,42 @@
+
+
+.dialog {
+    position: absolute;
+
+    border-left: 1px solid var(--decor-color);
+    border-right: 1px solid var(--decor-color);
+
+    padding: 4rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 200px;
+    height: fit-content;
+}
+
+.titleBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: 15px;
+    font-style: italic;
+    color: var(--text-highlight);
+}
+
+.closeButton {
+    width: 16px;
+    height: 16px;
+
+    padding: 0.25rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

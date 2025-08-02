@@ -25,6 +25,7 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 
+  --decor-color: #574E49;
   --text-color: #8A6F6A;
   --text-highlight: #F1ECEB;
   color: var(--text-color);
