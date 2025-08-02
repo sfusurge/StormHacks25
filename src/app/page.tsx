@@ -4,7 +4,7 @@ import Image from "next/image";
 import Sidebar from "@/components/Sidebar";
 import Frame from "@/components/Frame";
 import Controls from "@/components/Controls";
-import Timer from "@/components/Timer";
+import Timer from "@/components/Timer/Timer";
 import SwapBackground from "@/components/SwapBackground";
 import {useState} from "react";
 import {Backgrounds} from "@/Backgrounds";
