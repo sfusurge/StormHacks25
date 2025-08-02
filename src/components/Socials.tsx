@@ -1,5 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
+import { useTheme } from './ThemeProvider';
 
 type IconProps = {
     href: string;
@@ -22,25 +23,28 @@ function SocialIcon({ href, src, alt }: IconProps) {
 }
 
 export default function Socials() {
+    const { mode } = useTheme();
+
     return (
         <div>
             <div className="flex flex-row justify-center items-center gap-4 mt-4">
                 <SocialIcon
                     href="https://www.instagram.com/sfusurge/"
-                    src="/assets/ig.svg"
+                    src={`/assets/ig-${mode}.svg`}
                     alt="Instagram"
                 />
                 <SocialIcon
                     href="https://sfusurge.com"
-                    src="/assets/website.svg"
+                    src={`/assets/website-${mode}.svg`}
                     alt="Website"
                 />
                 <SocialIcon
                     href="https://www.linkedin.com/company/sfu-surge/"
-                    src="/assets/linkedin.svg"
+                    src={`/assets/linkedin-${mode}.svg`}
                     alt="LinkedIn"
                 />
             </div>
         </div>
     );
 }
+
