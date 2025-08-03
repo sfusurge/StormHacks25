@@ -21,13 +21,13 @@ export function MusicTypeSelectorDialog({ onClose: _onClose }: { onClose: () => 
             >
                 Calm
             </HoverEffectButton>
-            <HoverEffectButton
-                style={{ padding: "0.1rem 0.25rem" }}
-                onClick={() => {
-                    setLib("ambiance");
-                }}>
-                Ambiance
-            </HoverEffectButton>
+            {/*<HoverEffectButton*/}
+            {/*    style={{ padding: "0.1rem 0.25rem" }}*/}
+            {/*    onClick={() => {*/}
+            {/*        setLib("ambiance");*/}
+            {/*    }}>*/}
+            {/*    Ambiance*/}
+            {/*</HoverEffectButton>*/}
             <HoverEffectButton
                 style={{ padding: "0.1rem 0.25rem" }}
                 onClick={() => {
