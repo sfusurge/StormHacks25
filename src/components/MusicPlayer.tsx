@@ -122,14 +122,16 @@ export default function Controls() {
     const playNext = () => {
         const nextIndex = (currentTrackIndex + 1) % musicLib.length;
         setCurrentTrackIndex(nextIndex);
+        setIsPlaying(true);
     };
-
+    
     const playPrevious = () => {
         const prevIndex =
             currentTrackIndex === 0
-                ? musicLib.length - 1
-                : currentTrackIndex - 1;
-        setCurrentTrackIndex(prevIndex);
+            ? musicLib.length - 1
+            : currentTrackIndex - 1;
+            setCurrentTrackIndex(prevIndex);
+        setIsPlaying(true);
     };
 
     const handleAudioEnded = () => {
@@ -157,7 +159,6 @@ export default function Controls() {
                         triggerButton={<HoverEffectButton
                             onClick={() => setShowMusicSelector(!showMusicSelector)}
                             className="flex-1 min-w-15 max-w-15"
-                            active={showMusicSelector}
                         >
                             <Image
                                 src={`/assets/music-${mode}.svg`}
@@ -209,7 +210,6 @@ export default function Controls() {
                         mobileTriggerButton={<HoverEffectButton
                             onClick={() => setShowAmbianceMenu(!showAmbianceMenu)}
                             className="flex-1 min-w-15 max-w-15"
-                            active={showAmbianceMenu}
                         >
                             <Image
                                 src={`/assets/sound-${mode}.svg`}
@@ -238,7 +238,6 @@ export default function Controls() {
                                         onClick={() => {
                                             setShowMusicSelector(true);
                                         }}
-                                        active={showMusicSelector}
                                     >
                                         <Image
                                             src={`/assets/music-${mode}.svg`}
@@ -280,7 +279,6 @@ export default function Controls() {
                                     setShowAmbianceMenu(true);
                                 }}
                                 className="self-center"
-                                active={showAmbianceMenu}
                             >
                                 <Image
                                     src={`/assets/sound-${mode}.svg`}
@@ -312,7 +310,6 @@ export default function Controls() {
                         <HoverEffectButton
                             className="cursor-pointer"
                             onClick={togglePlayPause}
-                            active={isPlaying}
                         >
                             <Image
                                 src={

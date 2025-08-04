@@ -6,6 +6,7 @@ import useSound from 'use-sound';
 import HoverEffectButton from '@/components/HoverEffectButton';
 import style from './Timer.module.css';
 import { useTheme } from '../ThemeProvider';
+import { BlockPatternVertical } from '../svgs/BlockPatternVertical';
 
 export default function Timer() {
     const [paused, setPaused] = useState(true);
@@ -57,7 +58,7 @@ export default function Timer() {
         <>
 
             {/* Mobile */}
-            <div className='flex flex-row gap-0 items-center border border-decor bg-background w-full py-2 px-4 sm:hidden justify-between'>
+            <div className='flex flex-row gap-0 items-center border border-decor bg-background w-full py-2 px-3 sm:hidden justify-between'>
                 <div className="flex flex-row gap-1.5">
                     <Image
                         src={`/assets/clock-${mode}.svg`}
@@ -138,18 +139,18 @@ export default function Timer() {
                         setPaused(!paused);
                     }}
                     className="bg-[#06060599] text-md px-2 py-1 border-[0.643px] flex items-center justify-center cursor-pointer
-                        text-decor border-decor hover:border-main "
+                        text-decor not-italic border-decor hover:border-main "
                 >
                     {paused ? 'Start' : 'Stop'}
                 </HoverEffectButton>
             </div>
 
             {/* Desktop */}
-            <div className="hidden sm:flex mt-auto mb-8 relative border border-accent bg-background w-[181px] h-[43px]">
+            <div className="hidden sm:flex mt-auto mb-8 relative border border-accent bg-background h-11">
                 <div className="flex justify-between items-center h-full">
-                    <div className="h-[43px] w-[11px] [background-image:url('/assets/block-pattern-vertical.svg')] bg-repeat-y" />
-                    <div className="flex justify-center items-center w-[153px] gap-2 h-[33px] p-[6.427px] flex-shrink-0 border-[0.643px] border-accent bg-[#06060599]">
-                        <div className="flex flex-row gap-0 items-center">
+                    <BlockPatternVertical  className='h-[44px] mr-1'/>
+                    <div className="flex justify-between px-2 items-center w-[153px] gap-2 h-[33px] p-[6.427px] flex-shrink-0 border-[0.643px] border-accent bg-[#06060599]">
+                        <div className="flex flex-row gap-0 justify-between items-center">
                             <Image
                                 src={`/assets/clock-${mode}.svg`}
                                 height={15}
@@ -234,7 +235,7 @@ export default function Timer() {
                             {paused ? 'Start' : 'Stop'}
                         </HoverEffectButton>
                     </div>
-                    <div className="h-[43px] w-[11px] [background-image:url('/assets/block-pattern-vertical.svg')] bg-repeat-y rotate-180" />
+                    <BlockPatternVertical className='h-11 ml-1 rotate-180' />
                 </div>
             </div>
         </>

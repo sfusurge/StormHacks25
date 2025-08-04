@@ -6,6 +6,7 @@ import { BlockPattern } from './svgs/BlockPattern';
 import { Diamond } from './svgs/Diamond';
 import { LineDiamond } from './svgs/LineDiamond';
 import { LineDiamondVertical } from './svgs/LineDiamondVertical';
+import { BlockPatternVertical } from './svgs/BlockPatternVertical';
 
 export default function Sidebar() {
     return (
@@ -47,7 +48,8 @@ export default function Sidebar() {
 
                     <div className="flex flex-col gap-3 text-left">
                         <p className="italic font-bold text-xl md:text-[15px] leading-normal px-5 text-main">
-                            Your 24-Hour Creative Sandbox
+                            {/* Your 24-Hour Creative Sandbox */}
+                            More Details Coming Soon...
                         </p>
                         <p className="italic font-normal text-base sm:text-[12px] text-balance leading-normal w-full px-5 text-primary">
                             Join us at SFU Burnaby Campus from October 4th to

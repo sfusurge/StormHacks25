@@ -69,7 +69,6 @@ export default function Home() {
                         <TimerDialog
                             mobileTriggerButton={<HoverEffectButton
                                 onClick={() => setShowSettings(!showSettings)}
-                                active={showSettings}
                             >
                                 <Image
                                     src={`/assets/settings-${mode}.svg`}

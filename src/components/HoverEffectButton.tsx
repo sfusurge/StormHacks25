@@ -6,13 +6,13 @@ const HoverEffectButton = ({
     onClick,
     className = '',
     style,
-    active = false
+    type = "button"
 }: Readonly<{
     children: React.ReactNode;
     onClick?: () => void;
     className?: string;
     style?: CSSProperties;
-    active?: boolean;
+    type?: "button" | "submit" | "reset";
 }>) => {
     const soundUrl = '/audio/sound-effects/button_hover.mp3';
     const [play] = useSound(soundUrl, { volume: 0.01 });
@@ -23,6 +23,7 @@ const HoverEffectButton = ({
             className={`cursor-pointer group relative transition-all duration-300 border-[0.643px] border-decor hover:border-main hover:shadow-[0_0_7px_0_var(--color-decor)] ${className}`}
             onMouseEnter={() => play()}
             onClick={onClick}
+            type={type}
         >
             <div className="transition-all duration-300 group-hover:brightness-[1.8] group-hover:sepia-[0.2] group-hover:hue-rotate-[15deg]">
                 {children}
