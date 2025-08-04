@@ -20,7 +20,7 @@ const HoverEffectButton = ({
     return (
         <button
             style={{ ...style }}
-            className={`cursor-pointer group relative transition-all duration-300 border-[0.643px] border-decor hover:border-main hover:shadow-[0_0_7px_0_var(--color-decor)] ${active ? 'z-[1001]' : ''} ${className}`}
+            className={`cursor-pointer group relative transition-all duration-300 border-[0.643px] border-decor hover:border-main hover:shadow-[0_0_7px_0_var(--color-decor)] ${className}`}
             onMouseEnter={() => play()}
             onClick={onClick}
         >

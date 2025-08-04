@@ -13,7 +13,7 @@
 }
 
 .slider {
-    width: 150px;
+    width: 100%;
     height: 0.5rem;
     position: relative;
     border: 1px solid var(--color-decor);
@@ -59,9 +59,9 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
 
-    width: fit-content;
+    width: 100%;
 }
 
 .row > img {

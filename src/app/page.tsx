@@ -42,37 +42,48 @@ export default function Home() {
             <AmbiancePlayer />
 
             {/*background tiling*/}
-            <div
-                className="absolute z-10
-                bg-[length:82.5px_82.5px]
-                bg-center
-                bg-repeat
-                w-[200%] h-[200%]
-                left-[-50%] top-[-50%]
-                rotate-45
-                origin-center"
-                style={{
-                    background: `url('/assets/pattern-element-buffer-${mode}.svg')`,
-                }}
-            />
-
+            <div className="absolute inset-0 z-10 overflow-hidden">
+                <div
+                    className="absolute
+                        bg-[length:82.5px_82.5px]
+                        bg-center
+                        bg-repeat
+                        w-[250%] h-[250%]
+                        left-[-50%] top-[-25%]
+                        rotate-45
+                        origin-center"
+                    style={{
+                        background: `url('/assets/pattern-element-buffer-${mode}.svg')`,
+                    }}
+                />
+            </div>
 
             <div className="relative z-30 flex flex-col lg:flex-row h-full">
                 <Sidebar />
+
+
+
                 <div className="sm:hidden w-full">
-                    {showSettings &&
-                        <TimerDialog onChangeBackground={onChangeBackground} mobileMode onClose={() => setShowSettings(false)} />
-                    }
                     <div className="flex w-full px-5 py-5 italic justify-between leading-tight">
                         <CurrentTrackInfo />
-                        <HoverEffectButton onClick={() => setShowSettings(!showSettings)} active={showSettings}>
-                            <Image
-                                src={`/assets/settings-${mode}.svg`}
-                                height={40}
-                                width={40}
-                                alt="Open Settings Modal"
-                            />
-                        </HoverEffectButton>
+                        <TimerDialog
+                            mobileTriggerButton={<HoverEffectButton
+                                onClick={() => setShowSettings(!showSettings)}
+                                active={showSettings}
+                            >
+                                <Image
+                                    src={`/assets/settings-${mode}.svg`}
+                                    height={40}
+                                    width={40}
+                                    alt="Open Settings Modal"
+                                />
+                            </HoverEffectButton>}
+                            mobileShow={showSettings}
+                            onChangeBackground={onChangeBackground}
+                            mobileMode
+                            onClose={() => setShowSettings(false)}
+                        />
+
                     </div>
                     <div className="relative w-full h-full">
                         <CurrentBackgroundMobile currentBackground={currentBackground} />
