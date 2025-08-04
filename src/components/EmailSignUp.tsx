@@ -55,7 +55,7 @@ export default function EmailSignup() {
     return (
         <form
             onSubmit={handleSubmit}
-            className="w-full sm:max-w-md mx-auto bg-[#06060599] border border-border py-4 flex items-center justify-between"
+            className="w-full sm:max-w-md bg-[#06060599] border border-border py-4 flex items-center"
         >
             <div className="relative left-2.5 w-5 h-5 mr-4">
                 <Image
@@ -72,12 +72,12 @@ export default function EmailSignup() {
                 value={email}
                 onChange={handleChange}
                 required
-                className="bg-transparent text-xs pl-1 pr-4 placeholder-primary text-white focus:outline-none"
+                className="bg-transparent flex-1 w-full text-xs pl-1 pr-6 placeholder-primary text-white focus:outline-none"
                 disabled={isLoading}
             />
             <button
                 type="submit"
-                className="relative right-2.5 w-10 h-6 border-border border-[0.735px] hover:opacity-80 transition-opacity duration-200"
+                className="relative right-4 w-10 h-6 border-border cursor-pointer border-[0.735px] hover:opacity-80 transition-opacity duration-200"
                 disabled={isLoading}
             >
                 <Image

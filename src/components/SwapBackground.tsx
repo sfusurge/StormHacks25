@@ -52,17 +52,13 @@ export function MobileSwapBackground({
     const { mode, toggleMode } = useTheme();
 
     return (
-        <div style={{ width: '100%' }}>
+        <div className='w-full'>
             <div className='flex justify-center'>
                 <HorizontalDivider />
             </div>
-            <div style={{
-                display: 'flex',
-                gap: '0.75rem',
-                alignItems: 'center'
-            }}>
+            <div className='flex gap-3 items-center'>
                 <HoverEffectButton
-                    className="bg-[#06060599] px-4 py-3 text-sm text-decor border-[0.643px] border-decor cursor-pointer h-11 flex-1 flex items-center justify-center"
+                    className="bg-[#06060599] px-4 py-2 text-base sm:text-sm text-decor border-[0.643px] border-decor cursor-pointer h-11 flex-1 flex items-center justify-center"
                     onClick={onChangeBackground}
                 >
                     Swap Background

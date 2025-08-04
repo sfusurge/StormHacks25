@@ -54,98 +54,190 @@ export default function Timer() {
     }, [paused]);
 
     return (
-        <div className="mt-auto mb-8 relative border border-accent bg-[#161414D9] w-[181px] h-[43px]">
-            <div className="flex justify-between items-center h-full">
-                <div className="h-[43px] w-[11px] [background-image:url('/assets/block-pattern-vertical.svg')] bg-repeat-y" />
-                <div className="flex justify-center items-center w-[153px] gap-2 h-[33px] p-[6.427px] flex-shrink-0 border-[0.643px] border-accent bg-[#06060599]">
-                    <div className="flex flex-row gap-0 items-center">
-                        <Image
-                            src={`/assets/clock-${mode}.svg`}
-                            height={15}
-                            width={16}
-                            alt="clock"
+        <>
+
+            {/* Mobile */}
+            <div className='flex flex-row gap-0 items-center border border-decor bg-background w-full py-2 px-4 sm:hidden justify-between'>
+                <div className="flex flex-row gap-1.5">
+                    <Image
+                        src={`/assets/clock-${mode}.svg`}
+                        height={32}
+                        width={32}
+                        alt="clock"
+                    />
+
+                    <span className={style.timeInputContainer}>
+                        <input
+                            style={{
+                                textAlign: 'right',
+                            }}
+                            value={minutes}
+                            ref={minRef}
+                            className={`${style.timeInputField} text-base w-5`}
+                            type="number"
+                            min={0}
+                            max={999}
+                            onChange={(e) => {
+                                setPaused(true);
+                                const val = Math.max(
+                                    Math.min(999, parseInt(e.target.value)),
+                                    0,
+                                );
+                                if (isNaN(val)) {
+                                    return setMinutes('0');
+                                }
+                                setMinutes(`${val}`);
+                            }}
+                            onKeyUp={(e) => {
+                                if (e.key === 'Enter' || e.key === ':') {
+                                    minRef.current?.blur();
+                                    secRef.current?.select();
+                                }
+                            }}
                         />
+                        :
+                        <input
+                            style={{
+                                textAlign: 'left',
+                            }}
+                            ref={secRef}
+                            value={seconds}
+                            className={`${style.timeInputField} text-base w-5`}
+                            type="number"
+                            min={0}
+                            max={59}
+                            onChange={(e) => {
+                                setPaused(true);
+                                const val = Math.max(
+                                    Math.min(59, parseInt(e.target.value)),
+                                    0,
+                                );
 
-                        <span className={style.timeInputContainer}>
-                            <input
-                                style={{
-                                    textAlign: 'right',
-                                }}
-                                value={minutes}
-                                ref={minRef}
-                                className={style.timeInputField}
-                                type="number"
-                                min={0}
-                                max={999}
-                                onChange={(e) => {
-                                    setPaused(true);
-                                    const val = Math.max(
-                                        Math.min(999, parseInt(e.target.value)),
-                                        0,
-                                    );
-                                    if (isNaN(val)) {
-                                        return setMinutes('0');
-                                    }
-                                    setMinutes(`${val}`);
-                                }}
-                                onKeyUp={(e) => {
-                                    if (e.key === 'Enter' || e.key === ':') {
-                                        minRef.current?.blur();
-                                        secRef.current?.select();
-                                    }
-                                }}
-                            />
-                            :
-                            <input
-                                style={{
-                                    textAlign: 'left',
-                                }}
-                                ref={secRef}
-                                value={seconds}
-                                className={style.timeInputField}
-                                type="number"
-                                min={0}
-                                max={59}
-                                onChange={(e) => {
-                                    setPaused(true);
-                                    const val = Math.max(
-                                        Math.min(59, parseInt(e.target.value)),
-                                        0,
-                                    );
+                                if (isNaN(val)) {
+                                    return setSeconds('00');
+                                }
 
-                                    if (isNaN(val)) {
-                                        return setSeconds('00');
-                                    }
-
-                                    if (val < 10) {
-                                        setSeconds(`0${val}`);
-                                    } else {
-                                        setSeconds(`${val}`);
-                                    }
-                                }}
-                                onKeyUp={(e) => {
-                                    if (e.key === 'Enter') {
-                                        secRef.current?.blur();
-                                        setPaused(false);
-                                    }
-                                }}
-                            />
-                        </span>
-                    </div>
-
-                    <HoverEffectButton
-                        onClick={() => {
-                            setPaused(!paused);
-                        }}
-                        className="bg-[#06060599] px-2 py-1 text-xs border-[0.643px] h-[20px] w-[45px] flex items-center justify-center cursor-pointer
-                            text-decor border-decor hover:border-main "
-                    >
-                        {paused ? 'Start' : 'Stop'}
-                    </HoverEffectButton>
+                                if (val < 10) {
+                                    setSeconds(`0${val}`);
+                                } else {
+                                    setSeconds(`${val}`);
+                                }
+                            }}
+                            onKeyUp={(e) => {
+                                if (e.key === 'Enter') {
+                                    secRef.current?.blur();
+                                    setPaused(false);
+                                }
+                            }}
+                        />
+                    </span>
                 </div>
-                <div className="h-[43px] w-[11px] [background-image:url('/assets/block-pattern-vertical.svg')] bg-repeat-y rotate-180" />
+
+                <HoverEffectButton
+                    onClick={() => {
+                        setPaused(!paused);
+                    }}
+                    className="bg-[#06060599] text-md px-2 py-1 border-[0.643px] flex items-center justify-center cursor-pointer
+                        text-decor border-decor hover:border-main "
+                >
+                    {paused ? 'Start' : 'Stop'}
+                </HoverEffectButton>
             </div>
-        </div>
+
+            {/* Desktop */}
+            <div className="hidden sm:flex mt-auto mb-8 relative border border-accent bg-background w-[181px] h-[43px]">
+                <div className="flex justify-between items-center h-full">
+                    <div className="h-[43px] w-[11px] [background-image:url('/assets/block-pattern-vertical.svg')] bg-repeat-y" />
+                    <div className="flex justify-center items-center w-[153px] gap-2 h-[33px] p-[6.427px] flex-shrink-0 border-[0.643px] border-accent bg-[#06060599]">
+                        <div className="flex flex-row gap-0 items-center">
+                            <Image
+                                src={`/assets/clock-${mode}.svg`}
+                                height={15}
+                                width={16}
+                                alt="clock"
+                            />
+
+                            <span className={style.timeInputContainer}>
+                                <input
+                                    style={{
+                                        textAlign: 'right',
+                                    }}
+                                    value={minutes}
+                                    ref={minRef}
+                                    className={style.timeInputField}
+                                    type="number"
+                                    min={0}
+                                    max={999}
+                                    onChange={(e) => {
+                                        setPaused(true);
+                                        const val = Math.max(
+                                            Math.min(999, parseInt(e.target.value)),
+                                            0,
+                                        );
+                                        if (isNaN(val)) {
+                                            return setMinutes('0');
+                                        }
+                                        setMinutes(`${val}`);
+                                    }}
+                                    onKeyUp={(e) => {
+                                        if (e.key === 'Enter' || e.key === ':') {
+                                            minRef.current?.blur();
+                                            secRef.current?.select();
+                                        }
+                                    }}
+                                />
+                                :
+                                <input
+                                    style={{
+                                        textAlign: 'left',
+                                    }}
+                                    ref={secRef}
+                                    value={seconds}
+                                    className={style.timeInputField}
+                                    type="number"
+                                    min={0}
+                                    max={59}
+                                    onChange={(e) => {
+                                        setPaused(true);
+                                        const val = Math.max(
+                                            Math.min(59, parseInt(e.target.value)),
+                                            0,
+                                        );
+
+                                        if (isNaN(val)) {
+                                            return setSeconds('00');
+                                        }
+
+                                        if (val < 10) {
+                                            setSeconds(`0${val}`);
+                                        } else {
+                                            setSeconds(`${val}`);
+                                        }
+                                    }}
+                                    onKeyUp={(e) => {
+                                        if (e.key === 'Enter') {
+                                            secRef.current?.blur();
+                                            setPaused(false);
+                                        }
+                                    }}
+                                />
+                            </span>
+                        </div>
+
+                        <HoverEffectButton
+                            onClick={() => {
+                                setPaused(!paused);
+                            }}
+                            className="bg-[#06060599] px-2 py-1 text-xs border-[0.643px] h-[20px] w-[45px] flex items-center justify-center cursor-pointer
+                        text-decor border-decor hover:border-main "
+                        >
+                            {paused ? 'Start' : 'Stop'}
+                        </HoverEffectButton>
+                    </div>
+                    <div className="h-[43px] w-[11px] [background-image:url('/assets/block-pattern-vertical.svg')] bg-repeat-y rotate-180" />
+                </div>
+            </div>
+        </>
     );
 }
 
