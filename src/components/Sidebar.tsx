@@ -5,10 +5,11 @@ import { StormHacksLogo } from './svgs/StormHacksLogo';
 import { BlockPattern } from './svgs/BlockPattern';
 import { Diamond } from './svgs/Diamond';
 import { LineDiamond } from './svgs/LineDiamond';
+import { LineDiamondVertical } from './svgs/LineDiamondVertical';
 
 export default function Sidebar() {
     return (
-        <div className="p-4 sm:pb-4 pb-8 flex flex-col w-full lg:w-[302px]  lg:border-r border-b lg:border-b-0 border-accent bg-background justify-between items-center gap-4">
+        <div className="p-4 sm:pb-4 pb-8 flex flex-col w-full lg:w-[302px] lg:border-r border-b lg:border-b-0 border-accent bg-background justify-between items-center gap-4">
             <div className="w-full items-center">
                 <div className="w-full flex items-center justify-center flex-col">
                     <BlockPattern />
@@ -24,18 +25,14 @@ export default function Sidebar() {
                     <StormHacksLogo />
 
                     <div className="md:flex flex-col items-center hidden lg:hidden xl:hidden">
-                        <Image
-                            src="/assets/line-diamond-v.svg"
+                        <LineDiamondVertical
+                            height={138}
+                            width={16}
                             className="w-4 h-full"
-                            height={138}
-                            width={16}
-                            alt="vertical pattern"
                         />
-                        <Image
-                            src="/assets/line-diamond-v.svg"
+                        <LineDiamondVertical
                             height={138}
                             width={16}
-                            alt="vertical pattern"
                             className="rotate-180 w-4 h-full"
                         />
                     </div>
@@ -54,13 +51,13 @@ export default function Sidebar() {
                         </p>
                         <p className="italic font-normal text-base sm:text-[12px] text-balance leading-normal w-full px-5 text-primary">
                             Join us at SFU Burnaby Campus from October 4th to
-                            5th for StormHacks 2025. This is Western Canada’s
+                            5th for StormHacks 2025. This is Western Canada's
                             biggest hackathon, a place where innovators like you
                             can turn their visions into reality.
                         </p>
                     </div>
 
-                    <div className="flex sm:hidden lg:flex px-5 mb-4">
+                    <div className="flex sm:hidden lg:flex mx-5 mb-4">
                         <EmailSignUp />
                     </div>
                 </div>
