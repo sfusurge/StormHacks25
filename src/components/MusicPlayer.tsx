@@ -12,7 +12,7 @@ import {
 import HoverEffectButton from '@/components/HoverEffectButton';
 import { useTheme } from './ThemeProvider';
 import { atom, useAtom, useAtomValue } from 'jotai';
-import { BlockPatternVertical } from './svgs/BlockPatternVertival';
+import { BlockPatternVertical } from './svgs/BlockPatternVertical';
 import { Diamond } from './svgs/Diamond';
 import { MusicTypeSelectorDialog } from '@/components/MusicTypeSelectorDialog';
 import { AmbianceDialog } from '@/components/AmbianceDialog/AmbianceDialog';
@@ -45,6 +45,22 @@ export const musicLibAtom = atom(
         set(trackIndexAtom, 0);
     },
 );
+
+export function CurrentTrackInfo() {
+    const musicLib = useAtomValue(musicLibAtom);
+    const currentTrackIndex = useAtomValue(trackIndexAtom);
+    const currentTrack = useMemo(
+        () => musicLib[currentTrackIndex],
+        [currentTrackIndex, musicLib],
+    );
+
+    return (
+        <div className="flex flex-col">
+            <p className="font-bold">{currentTrack.title}</p>
+            <p className="text-primary">{currentTrack.artist}</p>
+        </div>
+    );
+}
 
 export default function Controls() {
     const musicLib = useAtomValue(musicLibAtom);
@@ -121,121 +137,209 @@ export default function Controls() {
     const [showMusicSelector, setShowMusicSelector] = useState(false);
     const [showAmbianceMenu, setShowAmbianceMenu] = useState(false);
 
+    const MobileMusicPlayer = () => (
+        <div className="flex justify-between items-center w-full gap-4">
+            <HoverEffectButton
+                onClick={() => setShowMusicSelector(!showMusicSelector)}
+                className="flex-1 min-w-6 max-w-15"
+                active={showMusicSelector}
+            >
+                <Image
+                    src={`/assets/music-${mode}.svg`}
+                    height={24}
+                    width={24}
+                    alt="Music Library"
+                    className="w-full"
+                />
+            </HoverEffectButton>
+
+            <div className="flex flex-1 gap-4 justify-center">
+                <HoverEffectButton onClick={playPrevious} className="flex-1 min-w-6 max-w-15">
+                    <Image
+                        src={`/assets/prev-${mode}.svg`}
+                        height={24}
+                        width={24}
+                        alt="Previous"
+                        className="w-full"
+                    />
+                </HoverEffectButton>
+                <HoverEffectButton
+                    onClick={togglePlayPause}
+                    className="flex-1 min-w-6 max-w-15"
+                >
+                    <Image
+                        src={isPlaying ? `/assets/pause-${mode}.svg` : `/assets/play-${mode}.svg`}
+                        height={24}
+                        width={24}
+                        alt={isPlaying ? 'Pause' : 'Play'}
+                        className="w-full"
+                    />
+                </HoverEffectButton>
+                <HoverEffectButton onClick={playNext} className="flex-1 min-w-6 max-w-15">
+                    <Image
+                        src={`/assets/next-${mode}.svg`}
+                        height={24}
+                        width={24}
+                        alt="Next"
+                        className="w-full"
+                    />
+                </HoverEffectButton>
+            </div>
+
+            <HoverEffectButton
+                onClick={() => setShowAmbianceMenu(!showAmbianceMenu)}
+                className="flex-1 min-w-6 max-w-15"
+                active={showAmbianceMenu}
+            >
+                <Image
+                    src={`/assets/sound-${mode}.svg`}
+                    height={24}
+                    width={24}
+                    alt="Sound"
+                    className="w-full"
+                />
+            </HoverEffectButton>
+
+            {showMusicSelector && (
+                <MusicTypeSelectorDialog
+                    mobileMode
+                    onClose={() => setShowMusicSelector(false)}
+                />
+            )}
+            {showAmbianceMenu && (
+                <AmbianceDialog
+                    mobileMode
+                    onClose={() => setShowAmbianceMenu(false)}
+                />
+            )}
+        </div>
+    );
 
     return (
-        <div className="mt-auto mb-4 relative border border-accent bg-[#161414D9]  md:w-[80%] xl:w-[50%] h-[43px]">
+        <>
             <audio
                 ref={audioRef}
                 onEnded={handleAudioEnded}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
             />
-            <div className="flex justify-between h-full">
-                <div className="flex flex-row gap-2">
-                    {/* <div className="w-[11px] [background-image:url('/assets/block-pattern-vertical.svg')] bg-repeat-y" /> */}
-                    <BlockPatternVertical />
-                    <div className="flex items-center justify-center gap-4">
-                        <div className="flex flex-row gap-2">
 
-                            <div className="self-center relative flex">
-                                <HoverEffectButton onClick={() => {
-                                    setShowMusicSelector(true);
-                                }}>
+            <div className="sm:hidden w-full">
+                <MobileMusicPlayer />
+            </div>
 
-                                    <Image
-                                        src={`/assets/music-${mode}.svg`}
-                                        height={24}
-                                        width={24}
-                                        alt="Play"
-                                    />
-                                </HoverEffectButton>
-                                {showMusicSelector &&
-                                    <MusicTypeSelectorDialog
-                                        onClose={() => {
-                                            setShowMusicSelector(false);
+            <div className="hidden sm:block mt-auto mb-4 relative border border-accent bg-[#161414D9] sm:w-[80%] xl:w-[50%] h-[43px]">
+                <div className="flex justify-between h-full">
+                    <div className="flex flex-row gap-2">
+                        <BlockPatternVertical />
+                        <div className="flex items-center justify-center gap-4">
+                            <div className="flex flex-row gap-2">
+
+                                <div className="self-center relative flex">
+                                    <HoverEffectButton
+                                        onClick={() => {
+                                            setShowMusicSelector(true);
                                         }}
-                                    />
-                                }
-                            </div>
+                                        active={showMusicSelector}
+                                    >
+                                        <Image
+                                            src={`/assets/music-${mode}.svg`}
+                                            height={24}
+                                            width={24}
+                                            alt="Play"
+                                        />
+                                    </HoverEffectButton>
+                                    {showMusicSelector &&
+                                        <MusicTypeSelectorDialog
+                                            onClose={() => {
+                                                setShowMusicSelector(false);
+                                            }}
+                                        />
+                                    }
+                                </div>
 
-                            <div className="flex flex-col">
-                                <p className="text-[12px] text-main font-bold">
-                                    {currentTitle}
-                                </p>
-                                <p className="text-[10px] text-primary">
-                                    {currentArtist}
-                                </p>
+                                <div className="flex flex-col">
+                                    <p className="text-[12px] text-main font-bold">
+                                        {currentTitle}
+                                    </p>
+                                    <p className="text-[10px] text-primary">
+                                        {currentArtist}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div className="flex flex-row gap-2">
+                        <div className="self-center relative flex">
+                            {showAmbianceMenu &&
+                                <AmbianceDialog onClose={() => {
+                                    setShowAmbianceMenu(false);
+                                }} />}
+                            <HoverEffectButton
+                                onClick={() => {
+                                    setShowAmbianceMenu(true);
+                                }}
+                                className="self-center"
+                                active={showAmbianceMenu}
+                            >
+                                <Image
+                                    src={`/assets/sound-${mode}.svg`}
+                                    height={24}
+                                    width={24}
+                                    alt="Sound"
+                                />
+                            </HoverEffectButton>
+                        </div>
+                        <div className="h-[43px] w-[11px] [background-image:url('/assets/block-pattern-vertical.svg')] bg-repeat-y rotate-180" />
+
+                        <BlockPatternVertical className="h-[43px] w-[11px] bg-repeat-y rotate-180" />
+                    </div>
                 </div>
-                <div className="flex flex-row gap-2">
-                    <div className="self-center relative flex">
-                        {showAmbianceMenu &&
-                            <AmbianceDialog onClose={() => {
-                                setShowAmbianceMenu(false);
-                            }} />}
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center gap-4">
+                    <Diamond width={8} height={14} />
+                    <div className="flex items-center justify-center gap-4">
                         <HoverEffectButton
-                            onClick={() => {
-                                setShowAmbianceMenu(true);
-                            }}
-                            className="self-center">
+                            className="cursor-pointer"
+                            onClick={playPrevious}
+                        >
                             <Image
-                                src={`/assets/sound-${mode}.svg`}
+                                src={`/assets/prev-${mode}.svg`}
                                 height={24}
                                 width={24}
-                                alt="Sound"
+                                alt="Previous"
+                            />
+                        </HoverEffectButton>
+                        <HoverEffectButton
+                            className="cursor-pointer"
+                            onClick={togglePlayPause}
+                            active={isPlaying}
+                        >
+                            <Image
+                                src={
+                                    isPlaying
+                                        ? `/assets/pause-${mode}.svg`
+                                        : `/assets/play-${mode}.svg`
+                                }
+                                height={24}
+                                width={24}
+                                alt={isPlaying ? 'Pause' : 'Play'}
+                            />
+                        </HoverEffectButton>
+                        <HoverEffectButton
+                            className="cursor-pointer"
+                            onClick={playNext}
+                        >
+                            <Image
+                                src={`/assets/next-${mode}.svg`}
+                                height={24}
+                                width={24}
+                                alt="Next"
                             />
                         </HoverEffectButton>
                     </div>
-                    <div className="h-[43px] w-[11px] [background-image:url('/assets/block-pattern-vertical.svg')] bg-repeat-y rotate-180" />
-
-                    <BlockPatternVertical className="h-[43px] w-[11px] bg-repeat-y rotate-180" />
+                    <Diamond width={8} height={14} />
                 </div>
             </div>
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center gap-4">
-                <Diamond width={8} height={14} />
-                <div className="flex items-center justify-center gap-4">
-                    <HoverEffectButton
-                        className="cursor-pointer"
-                        onClick={playPrevious}
-                    >
-                        <Image
-                            src={`/assets/prev-${mode}.svg`}
-                            height={24}
-                            width={24}
-                            alt="Previous"
-                        />
-                    </HoverEffectButton>
-                    <HoverEffectButton
-                        className="cursor-pointer"
-                        onClick={togglePlayPause}
-                    >
-                        <Image
-                            src={
-                                isPlaying
-                                    ? `/assets/pause-${mode}.svg`
-                                    : `/assets/play-${mode}.svg`
-                            }
-                            height={24}
-                            width={24}
-                            alt={isPlaying ? 'Pause' : 'Play'}
-                        />
-                    </HoverEffectButton>
-                    <HoverEffectButton
-                        className="cursor-pointer"
-                        onClick={playNext}
-                    >
-                        <Image
-                            src={`/assets/next-${mode}.svg`}
-                            height={24}
-                            width={24}
-                            alt="Next"
-                        />
-                    </HoverEffectButton>
-                </div>
-                <Diamond width={8} height={14} />
-            </div>
-        </div>
+        </>
     );
 }

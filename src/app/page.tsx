@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import Sidebar from '@/components/Sidebar';
-import Frame from '@/components/Frame';
-import Controls from '@/components/MusicPlayer';
+import Frame, { currentBackgroundIndexAtom, CurrentBackgroundMobile } from '@/components/Frame';
+import Controls, { CurrentTrackInfo } from '@/components/MusicPlayer';
 import Timer from '@/components/Timer/Timer';
 import SwapBackground from '@/components/SwapBackground';
 import { useState } from 'react';
@@ -12,13 +12,15 @@ import Footer from '@/components/Footer';
 import EmailSignUp from '@/components/EmailSignUp';
 import HoverEffectButton from '@/components/HoverEffectButton';
 import { useTheme } from '@/components/ThemeProvider';
-import {AmbiancePlayer} from "@/components/AmbiancePlayer";
+import { AmbiancePlayer } from "@/components/AmbiancePlayer";
+import { useAtom } from 'jotai';
+import { TimerDialog } from '@/components/Timer/TimerDialog';
 
 export default function Home() {
-    const [currentBackgroundIndex, setCurrentBackgroundIndex] = useState(0);
+    const [showSettings, setShowSettings] = useState(false);
+    const [currentBackgroundIndex, setCurrentBackgroundIndex] = useAtom(currentBackgroundIndexAtom);
 
     const { mode } = useTheme();
-
     const backgrounds = mode === 'angel' ? AngelBackgrounds : DemonBackgrounds;
     const currentBackground = backgrounds[currentBackgroundIndex];
 
@@ -28,7 +30,7 @@ export default function Home() {
     };
 
     return (
-        <div className="font-catriel min-h-screen w-full relative overflow-x-hidden sm:overflow-hidden bg-[#0C0C0B]">
+        <div className="font-catriel h-screen w-full relative overflow-x-hidden sm:overflow-hidden bg-[#0C0C0B]">
             {/*grain effect*/}
             {/* <Image
                 src="/assets/anim-background.gif"
@@ -53,19 +55,19 @@ export default function Home() {
                     background: `url('/assets/pattern-element-buffer-${mode}.svg')`,
                 }}
             />
-            <div className="relative z-30 flex flex-col lg:flex-row h-screen">
+
+
+            <div className="relative z-30 flex flex-col lg:flex-row h-full">
                 <Sidebar />
                 <div className="sm:hidden w-full">
+                    {showSettings &&
+                        <TimerDialog onChangeBackground={onChangeBackground} mobileMode onClose={() => setShowSettings(false)} />
+                    }
                     <div className="flex w-full px-5 py-5 italic justify-between leading-tight">
-                        <div className="flex flex-col">
-                            {/* TODO: CHANGE TO JOTAI STATE */}
-                            <p className="font-bold">Soft Spot</p>
-                            <p className="text-primary">Keshi</p>
-                        </div>
-                        {/* TODO: OPEN SETTINGS MODAL */}
-                        <HoverEffectButton>
+                        <CurrentTrackInfo />
+                        <HoverEffectButton onClick={() => setShowSettings(!showSettings)} active={showSettings}>
                             <Image
-                                src="/assets/settings.svg"
+                                src={`/assets/settings-${mode}.svg`}
                                 height={40}
                                 width={40}
                                 alt="Open Settings Modal"
@@ -73,20 +75,13 @@ export default function Home() {
                         </HoverEffectButton>
                     </div>
                     <div className="relative w-full h-full">
-                        {/* TODO: CHANGE TO JOTAI STATE */}
-                        <Image
-                            src="/backgrounds/background-1.png"
-                            alt="background"
-                            height={1000}
-                            width={1800}
-                            className="object-cover w-full h-[75dvh]"
-                        />
+                        <CurrentBackgroundMobile currentBackground={currentBackground} />
                     </div>
                 </div>
 
                 <Footer />
 
-                <div className="flex-1 sm:flex flex-col hidden">
+                <div className="flex-1 sm:flex flex-col hidden h-full">
                     <div className="flex justify-between items-start pt-8 px-8">
                         <Timer />
                         <div className="hidden sm:flex lg:hidden">

@@ -1,5 +1,29 @@
 import Image from 'next/image';
 import { useTheme } from './ThemeProvider';
+import { AngelBackgrounds, DemonBackgrounds } from '@/Backgrounds';
+import { useAtomValue } from 'jotai';
+import { atom } from 'jotai';
+
+export const currentBackgroundIndexAtom = atom(0);
+
+export function CurrentBackgroundMobile({ currentBackground }: FrameProps) {
+    const { mode } = useTheme();
+    const currentBackgroundIndex = useAtomValue(currentBackgroundIndexAtom);
+    
+    const backgrounds = mode === 'angel' ? AngelBackgrounds : DemonBackgrounds;
+    const currentBg = backgrounds[currentBackgroundIndex];
+
+    return (
+        <Image
+            key={currentBg}
+            src={currentBg}
+            alt="background"
+            height={1000}
+            width={1800}
+            className="object-cover w-full h-[75dvh]"
+        />
+    );
+}
 
 type FrameProps = {
     currentBackground: string;

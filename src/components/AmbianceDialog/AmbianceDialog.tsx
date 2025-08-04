@@ -4,14 +4,14 @@ import { CSSProperties, useState } from "react";
 import { masterVolumeAtom, ambianceVolumesAtom } from "@/components/AmbiancePlayer";
 import style from "./ambianceDialog.module.css";
 
-export function AmbianceDialog({ onClose }: { onClose: () => void }) {
+export function AmbianceDialog({ onClose, mobileMode = false }: { onClose: () => void, mobileMode?: boolean }) {
     const [masterVolume, setMasterVolume] = useAtom(masterVolumeAtom);
     const [volumes, setVolumes] = useAtom(ambianceVolumesAtom);
 
     const options = ["Rain", "Cafe", "Water", "Fire"];
 
     return (
-        <Dialog title="Sound Settings" onClose={onClose} mobileMode={false}>
+        <Dialog title="Sound Settings" onClose={onClose} mobileMode={mobileMode}>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
                 <div>
                     <p className={style.header}>Music Volume</p>
