@@ -35,6 +35,8 @@ function shuffleArr<T>(arr: T[]) {
     return arr;
 }
 
+export const currentLibTypeAtom = atom<'calm' | 'epic' | 'special' | 'ambiance'>('calm');
+
 const _musicLibAtom = atom<MusicItem[]>(shuffleArr(musicLibOptions.calm));
 export const musicLibAtom = atom(
     (get) => get(_musicLibAtom),
@@ -43,6 +45,7 @@ export const musicLibAtom = atom(
         shuffleArr(newLib);
         set(_musicLibAtom, newLib);
         set(trackIndexAtom, 0);
+        set(currentLibTypeAtom, variant);
     },
 );
 

@@ -8,19 +8,17 @@ export interface SwapBackgroundProps {
     onChangeBackground?: () => void;
 }
 
-
-
 export default function SwapBackground({
     onChangeBackground,
 }: SwapBackgroundProps) {
     const { mode, toggleMode } = useTheme();
 
     return (
-        <div className="mt-auto mb-8 relative border border-accent bg-background h-[41px]">
+        <div className="mt-auto mb-8 relative border border-accent bg-background h-11">
             <div className="flex justify-between items-center h-full">
-                <BlockPatternVertical className='h-11 mr-1'/>
+                <BlockPatternVertical className='h-11 mr-1.5'/>
                 <HoverEffectButton
-                    className="bg-[#06060599] px-2 py-1 text-xs text-decor border-[0.643px] border-decor cursor-pointer h-[22px] w-[118px] flex items-center justify-center mr-2"
+                    className="bg-[#06060599] px-2 py-1 text-xs text-decor border-[0.643px] border-decor cursor-pointer h-[22px] w-[118px] flex items-center justify-center mr-3"
                     onClick={onChangeBackground}
                 >
                     Swap Background
@@ -37,7 +35,7 @@ export default function SwapBackground({
                         height={22}
                     />
                 </HoverEffectButton>
-                <BlockPatternVertical className='h-11 rotate-180 ml-1'/>
+                <BlockPatternVertical className='h-11 rotate-180 ml-1.5'/>
             </div>
         </div>
     );

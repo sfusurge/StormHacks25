@@ -143,7 +143,7 @@ export default function Timer() {
             {/* Desktop */}
             <div className="hidden sm:flex mt-auto mb-8 relative border border-accent bg-background h-11">
                 <div className="flex justify-between items-center h-full">
-                    <BlockPatternVertical className='h-[44px] mr-1' />
+                    <BlockPatternVertical className='h-[44px] mr-1.5' />
                     <div className="flex justify-between px-2 items-center w-[153px] gap-2 h-[33px] p-[6.427px] flex-shrink-0 border-[0.643px] border-accent bg-[#06060599]">
                         <div className="flex flex-row gap-0 justify-between items-center">
                             <Image
@@ -169,7 +169,7 @@ export default function Timer() {
                             {paused ? 'Start' : 'Stop'}
                         </HoverEffectButton>
                     </div>
-                    <BlockPatternVertical className='h-11 ml-1 rotate-180' />
+                    <BlockPatternVertical className='h-11 ml-1.5 rotate-180' />
                 </div>
             </div>
         </>
