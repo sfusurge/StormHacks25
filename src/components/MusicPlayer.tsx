@@ -55,9 +55,9 @@ export function CurrentTrackInfo() {
     );
 
     return (
-        <div className="flex flex-col">
-            <p className="font-bold">{currentTrack.title}</p>
-            <p className="text-primary">{currentTrack.artist}</p>
+        <div className="flex flex-col flex-1 min-w-0">
+            <p className="font-bold truncate">{currentTrack.title}</p>
+            <p className="text-primary truncate">{currentTrack.artist}</p>
         </div>
     );
 }
