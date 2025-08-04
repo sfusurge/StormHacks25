@@ -4,16 +4,16 @@ import { musicLibAtom } from "@/components/MusicPlayer";
 import { useSetAtom } from "jotai";
 
 
-export function MusicTypeSelectorDialog({ onClose: _onClose }: { onClose: () => void }) {
+export function MusicTypeSelectorDialog({ onClose: _onClose, mobileMode = false }: { onClose: () => void, mobileMode?: boolean }) {
 
     const setLib = useSetAtom(musicLibAtom);
 
     return <Dialog
         title="Music Type"
         onClose={_onClose}
-        mobileMode={false}
+        mobileMode={mobileMode}
     >
-        <div style={{ display: "flex", gap: "0.25rem" }}>
+        <div style={{ display: "flex", gap: "1rem" }}>
             <HoverEffectButton onClick={() => {
                 setLib("calm");
             }}
