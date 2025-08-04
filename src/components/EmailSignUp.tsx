@@ -73,7 +73,7 @@ export default function EmailSignup() {
                 value={email}
                 onChange={handleChange}
                 required
-                className="bg-transparent flex-1 w-full text-base sm:text-xs pl-1 pr-6 placeholder-primary text-white focus:outline-none"
+                className="bg-transparent flex-1 w-full text-base sm:text-xs italic font-semibold pl-1 pr-6 placeholder-primary text-main focus:outline-none [&::placeholder]:not-italic [&::placeholder]:font-normal"
                 disabled={isLoading}
             />
             <HoverEffectButton type="button"className='relative flex items-center justify-center right-4 w-10 h-7 border-border cursor-pointer border-[0.735px] hover:opacity-80 transition-opacity duration-200'>
@@ -85,12 +85,6 @@ export default function EmailSignup() {
                     className="object-contain"
                 />
                 </HoverEffectButton>
-            {/* <button
-                type="submit"
-                className="relative right-4 w-10 h-6 border-border cursor-pointer border-[0.735px] hover:opacity-80 transition-opacity duration-200"
-                disabled={isLoading}
-            >
-            </button> */}
         </form>
     );
 }

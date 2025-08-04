@@ -5,6 +5,7 @@ import Sidebar from '@/components/Sidebar';
 import Frame, { currentBackgroundIndexAtom, CurrentBackgroundMobile } from '@/components/Frame';
 import Controls, { CurrentTrackInfo } from '@/components/MusicPlayer';
 import Timer from '@/components/Timer/Timer';
+import { TimerDisplay } from '@/components/Timer/TimerDisplay';
 import SwapBackground from '@/components/SwapBackground';
 import { useState } from 'react';
 import { AngelBackgrounds, DemonBackgrounds } from '@/Backgrounds';
@@ -61,27 +62,29 @@ export default function Home() {
             <div className="relative z-30 flex flex-col lg:flex-row h-full">
                 <Sidebar />
 
-
-
                 <div className="sm:hidden w-full">
                     <div className="flex w-full px-5 py-5 italic justify-between leading-tight">
                         <CurrentTrackInfo />
-                        <TimerDialog
-                            mobileTriggerButton={<HoverEffectButton
-                                onClick={() => setShowSettings(!showSettings)}
-                            >
-                                <Image
-                                    src={`/assets/settings-${mode}.svg`}
-                                    height={40}
-                                    width={40}
-                                    alt="Open Settings Modal"
-                                />
-                            </HoverEffectButton>}
-                            mobileShow={showSettings}
-                            onChangeBackground={onChangeBackground}
-                            mobileMode
-                            onClose={() => setShowSettings(false)}
-                        />
+
+                        <div className='flex justify-center items-center gap-3'>
+                            <TimerDisplay />
+                            <TimerDialog
+                                mobileTriggerButton={<HoverEffectButton
+                                    onClick={() => setShowSettings(!showSettings)}
+                                >
+                                    <Image
+                                        src={`/assets/settings-${mode}.svg`}
+                                        height={40}
+                                        width={40}
+                                        alt="Open Settings Modal"
+                                    />
+                                </HoverEffectButton>}
+                                mobileShow={showSettings}
+                                onChangeBackground={onChangeBackground}
+                                mobileMode
+                                onClose={() => setShowSettings(false)}
+                            />
+                        </div>
 
                     </div>
                     <div className="relative w-full h-full">
