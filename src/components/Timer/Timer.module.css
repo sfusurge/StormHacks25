@@ -1,11 +1,16 @@
 .timeInputContainer {
     display: flex;
     gap: 0.1rem;
-    font-size: 0.75rem;
     color: var(--color-decor);
     text-align: center;
+    align-items: center;
     background-color: transparent;
+    font-size: 0.75rem;
+    @media (max-width: 640px) {
+        font-size: 1rem;
+    }
 }
+
 .timeInputField {
     border: none;
     outline: none;

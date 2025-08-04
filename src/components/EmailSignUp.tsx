@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import { useTheme } from './ThemeProvider';
+import HoverEffectButton from './HoverEffectButton';
 
 export default function EmailSignup() {
     const [email, setEmail] = useState('');
@@ -55,12 +56,12 @@ export default function EmailSignup() {
     return (
         <form
             onSubmit={handleSubmit}
-            className="w-full sm:max-w-md mx-auto bg-[#06060599] border border-border py-4 flex items-center justify-between"
+            className="w-full sm:max-w-md bg-[#06060599] border border-border py-4 sm:py-2 flex items-center"
         >
             <div className="relative left-2.5 w-5 h-5 mr-4">
                 <Image
                     src={`/assets/mail-${mode}.svg`}
-                    alt="frame"
+                    alt="email icon"
                     fill
                     className="object-contain"
                 />
@@ -72,21 +73,18 @@ export default function EmailSignup() {
                 value={email}
                 onChange={handleChange}
                 required
-                className="bg-transparent text-xs pl-1 pr-4 placeholder-primary text-white focus:outline-none"
+                className="bg-transparent flex-1 w-full text-base sm:text-xs italic font-semibold pl-1 pr-6 placeholder-primary text-main focus:outline-none [&::placeholder]:not-italic [&::placeholder]:font-normal"
                 disabled={isLoading}
             />
-            <button
-                type="submit"
-                className="relative right-2.5 w-10 h-6 border-border border-[0.735px] hover:opacity-80 transition-opacity duration-200"
-                disabled={isLoading}
-            >
+            <HoverEffectButton type="button"className='relative flex items-center justify-center right-4 w-10 h-7 border-border cursor-pointer border-[0.735px] hover:opacity-80 transition-opacity duration-200'>
                 <Image
                     src={`/assets/submit-${mode}.svg`}
-                    alt="arrow"
-                    fill
+                    alt="submit arrow"
+                    width={24}
+                    height={16}
                     className="object-contain"
                 />
-            </button>
+                </HoverEffectButton>
         </form>
     );
 }

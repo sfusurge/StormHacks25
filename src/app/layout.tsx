@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import { Toaster } from 'sonner';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { TimerController } from '@/components/Timer/TimerController';
 
 export const metadata: Metadata = {
     title: 'StormHacks 2025',
@@ -58,6 +59,7 @@ export default function RootLayout({
                             },
                         }}
                     />
+                    <TimerController/>
                 </ThemeProvider>
             </body>
         </html>

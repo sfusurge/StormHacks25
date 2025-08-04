@@ -5,6 +5,7 @@ import Sidebar from '@/components/Sidebar';
 import Frame, { currentBackgroundIndexAtom, CurrentBackgroundMobile } from '@/components/Frame';
 import Controls, { CurrentTrackInfo } from '@/components/MusicPlayer';
 import Timer from '@/components/Timer/Timer';
+import { TimerDisplay } from '@/components/Timer/TimerDisplay';
 import SwapBackground from '@/components/SwapBackground';
 import { useState } from 'react';
 import { AngelBackgrounds, DemonBackgrounds } from '@/Backgrounds';
@@ -42,37 +43,49 @@ export default function Home() {
             <AmbiancePlayer />
 
             {/*background tiling*/}
-            <div
-                className="absolute z-10
-                bg-[length:82.5px_82.5px]
-                bg-center
-                bg-repeat
-                w-[200%] h-[200%]
-                left-[-50%] top-[-50%]
-                rotate-45
-                origin-center"
-                style={{
-                    background: `url('/assets/pattern-element-buffer-${mode}.svg')`,
-                }}
-            />
-
+            <div className="absolute inset-0 z-10 overflow-hidden">
+                <div
+                    className="absolute
+                        bg-[length:82.5px_82.5px]
+                        bg-center
+                        bg-repeat
+                        w-[250%] h-[250%]
+                        left-[-50%] top-[-25%]
+                        rotate-45
+                        origin-center"
+                    style={{
+                        background: `url('/assets/pattern-element-buffer-${mode}.svg')`,
+                    }}
+                />
+            </div>
 
             <div className="relative z-30 flex flex-col lg:flex-row h-full">
                 <Sidebar />
+
                 <div className="sm:hidden w-full">
-                    {showSettings &&
-                        <TimerDialog onChangeBackground={onChangeBackground} mobileMode onClose={() => setShowSettings(false)} />
-                    }
                     <div className="flex w-full px-5 py-5 italic justify-between leading-tight">
                         <CurrentTrackInfo />
-                        <HoverEffectButton onClick={() => setShowSettings(!showSettings)} active={showSettings}>
-                            <Image
-                                src={`/assets/settings-${mode}.svg`}
-                                height={40}
-                                width={40}
-                                alt="Open Settings Modal"
+
+                        <div className='flex justify-center items-center gap-3'>
+                            <TimerDisplay />
+                            <TimerDialog
+                                mobileTriggerButton={<HoverEffectButton
+                                    onClick={() => setShowSettings(!showSettings)}
+                                >
+                                    <Image
+                                        src={`/assets/settings-${mode}.svg`}
+                                        height={40}
+                                        width={40}
+                                        alt="Open Settings Modal"
+                                    />
+                                </HoverEffectButton>}
+                                mobileShow={showSettings}
+                                onChangeBackground={onChangeBackground}
+                                mobileMode
+                                onClose={() => setShowSettings(false)}
                             />
-                        </HoverEffectButton>
+                        </div>
+
                     </div>
                     <div className="relative w-full h-full">
                         <CurrentBackgroundMobile currentBackground={currentBackground} />
