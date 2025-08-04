@@ -12,6 +12,7 @@ import Footer from '@/components/Footer';
 import EmailSignUp from '@/components/EmailSignUp';
 import HoverEffectButton from '@/components/HoverEffectButton';
 import { useTheme } from '@/components/ThemeProvider';
+import {AmbiancePlayer} from "@/components/AmbiancePlayer";
 
 export default function Home() {
     const [currentBackgroundIndex, setCurrentBackgroundIndex] = useState(0);
@@ -36,6 +37,8 @@ export default function Home() {
                 alt="horizontal pattern"
                 className="absolute z-30 w-full h-full object-cover pointer-events-none mix-blend-color-dodge"
             /> */}
+            <AmbiancePlayer />
+
             {/*background tiling*/}
             <div
                 className="absolute z-10

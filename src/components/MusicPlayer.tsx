@@ -15,7 +15,8 @@ import { atom, useAtom, useAtomValue } from 'jotai';
 import { BlockPatternVertical } from './svgs/BlockPatternVertival';
 import { Diamond } from './svgs/Diamond';
 import { MusicTypeSelectorDialog } from '@/components/MusicTypeSelectorDialog';
-import { AmbianceDialog, masterVolumnAtom } from '@/components/AmbianceDialog/AmbianceDialog';
+import { AmbianceDialog } from '@/components/AmbianceDialog/AmbianceDialog';
+import { masterVolumeAtom } from '@/components/AmbiancePlayer';
 
 const trackIndexAtom = atom(0);
 
@@ -51,7 +52,7 @@ export default function Controls() {
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef<HTMLAudioElement>(null);
 
-    const masterVolume = useAtomValue(masterVolumnAtom);
+    const masterVolume = useAtomValue(masterVolumeAtom);
 
     const currentTrack = useMemo(
         () => musicLib[currentTrackIndex],
