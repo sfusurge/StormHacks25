@@ -51,7 +51,7 @@ export default function Sidebar() {
                         </p>
                         <p className="italic font-normal text-base sm:text-[12px] text-balance leading-normal w-full px-5 text-primary">
                             Join us at SFU Burnaby Campus from October 4th to
-                            5th for StormHacks 2025. This is Western Canada's
+                            5th for StormHacks 2025. This is Western Canada&apos;s
                             biggest hackathon, a place where innovators like you
                             can turn their visions into reality.
                         </p>
