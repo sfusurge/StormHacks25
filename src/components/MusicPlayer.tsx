@@ -60,7 +60,7 @@ export function CurrentTrackInfo() {
     );
 
     return (
-        <div className="flex flex-col flex-1 min-w-0 pr-3">
+        <div className="flex flex-col flex-1 min-w-0 pr-3 w-[20px]">
             <ScrollingText text={`${currentTrack.title}`} className='font-bold' />
             <ScrollingText text={`${currentTrack.artist}`} className='font-primary' />
         </div>
@@ -310,9 +310,10 @@ export default function Controls() {
                                         text={currentTitle}
                                         className="text-[12px] text-main font-bold"
                                     />
-                                    <p className="text-[10px] text-primary">
-                                        {currentArtist}
-                                    </p>
+                                    <ScrollingText
+                                        text={currentArtist}
+                                        className="text-[10px] text-primary"
+                                    />
                                 </div>
                             </div>
                         </div>
