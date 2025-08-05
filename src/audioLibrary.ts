@@ -11,7 +11,7 @@ export const calmMusicLibrary: MusicItem[] = [
     { title: "Piccolo Notturno", artist: "Giorgio Sancristoforo", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/giorgio_sancristoforo_piccolo_notturno.mp3" },
     { title: "Ohio Is for Lovers", artist: "Hawthorne Heights", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/hawthorne_heights_ohio_is_for_lovers.mp3" },
     { title: "BCKYRD", artist: "Hot Mulligan", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/hot_mulligan_bckyrd.mp3" },
-    { title: "Hot Mulligan (feat. Mark Hoppus)", artist: "Hot Mulligan", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/hot_mulligan_featuring_mark_hoppus.mp3" },
+    { title: "Featuring Mark Hoppus", artist: "Hot Mulligan", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/hot_mulligan_featuring_mark_hoppus.mp3" },
     { title: "Breaking the Habit", artist: "Linkin Park", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/linkin_park_breaking_the_habit.mp3" },
     { title: "In the End", artist: "Linkin Park", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/linkin_park_in_the_end.mp3" },
     { title: "Apollo’s Lyre", artist: "Michael Levy", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/michael_levy_apollos_lyre.mp3" },
