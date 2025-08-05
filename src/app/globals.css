@@ -75,4 +75,5 @@ img {
     pointer-events: none;
     opacity: 1;
     transition: opacity 300ms ease-out;
+    user-select: none;
 }
