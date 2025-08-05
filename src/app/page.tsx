@@ -89,7 +89,7 @@ export default function Home() {
 
                 <Footer />
 
-                <div className="flex-1 sm:flex flex-col hidden h-full">
+                <div className="flex-1 sm:flex flex-col hidden h-full" style={{ maxHeight: "100dvh" }}>
                     <div className="flex justify-between items-start pt-8 px-8">
                         <Timer />
                         <div className="hidden sm:flex lg:hidden">
@@ -100,7 +100,8 @@ export default function Home() {
                         />
                     </div>
 
-                    <div className="flex-1 flex items-center justify-center">
+                    <div className="m-8 flex-1 flex items-center justify-center" style={{ minHeight: "0" }}>
+
                         <Frame currentBackground={currentBackground} />
                     </div>
                     <div className="flex justify-center pb-4">

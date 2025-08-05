@@ -34,55 +34,36 @@ type FrameProps = {
 
 export default function Frame({ currentBackground }: FrameProps) {
     const [loading, setLoading] = useState(false);
-    const [loadingProgress, setProgress] = useState(0);
-
-
-    useEffect(() => {
-        setLoading(true);
-
-    }, [currentBackground]);
 
     return (
-        <div className="w-full max-w-19/20 aspect-[872/511]">
-            <div className="relative w-full h-full">
-                <div className="absolute inset-0 p-[2.87%]">
-                    <div className="relative w-full h-full">
-                        <img
-                            key={currentBackground}
-                            src={currentBackground}
-                            alt="background"
-                            className="object-contain"
-                            style={{ display: loading ? "none" : "block" }}
-                            onLoad={() => {
-                                setLoading(false);
-                            }}
-                            onProgress={(e) => {
-                                const event = e as unknown as ProgressEvent;
-                                setProgress(Math.ceil((event.loaded / event.total) * 100));
-                            }}
-                        />
+        <div className="inset-0  relative" style={{
+            height: "100%",
+            width: "auto",
+            maxWidth: "100%",
+            objectFit: "contain",
+            display: 'flex',
+            aspectRatio: "calc(872/511)"    
+        }}>
 
-                        {loading && <div style={{ margin: "auto", display: "flex", height: "100%", width: '100%', alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
-                            Loading...
-                            <div style={{ maxWidth: "400px", width: "100%", margin: "0.5rem" }}>
-                                <ProgressBar val={loadingProgress} />
+            <img
+                key={currentBackground}
+                src={currentBackground}
+                alt="background"
+                style={{ width: "calc(100% - (2 * 2.87%))", maxWidth: "100%", objectFit: "contain", margin:"2.87%"  }}
 
-                            </div>
-                        </div>}
-                    </div>
-                </div>
+            />
 
-                <div className="absolute inset-0 pointer-events-none">
-                    <Image
-                        src={`/assets/frame.svg`}
-                        alt="frame"
-                        fill
-                        className="object-contain"
-                        loading='lazy'
-                        data-demon="border"
-                    />
-                </div>
-            </div>
+
+            <Image
+                src={`/assets/frame.svg`}
+                alt="frame"
+                fill
+                className="object-contain absolute inset-0 pointer-events-none"
+                loading='lazy'
+                data-demon="border"
+            />
+
         </div>
+
     );
 }
