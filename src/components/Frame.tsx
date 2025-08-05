@@ -57,8 +57,6 @@ export default function Frame({ currentBackground }: FrameProps) {
                                 setLoading(false);
                             }}
                             onProgress={(e) => {
-                                console.log(e);
-
                                 const event = e as unknown as ProgressEvent;
                                 setProgress(Math.ceil((event.loaded / event.total) * 100));
                             }}
