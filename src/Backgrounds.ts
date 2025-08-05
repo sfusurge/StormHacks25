@@ -1,10 +1,10 @@
 export const DemonBackgrounds = [
-    '/backgrounds/ScummuiusWrite.gif',
-    '/backgrounds/fountain-demon.gif',
+    '/backgrounds/ScummuiusWrite.webp',
+    '/backgrounds/fountain-demon.webp',
 ];
 
 export const AngelBackgrounds = [
-    '/backgrounds/SparkyWrite.gif',
-    '/backgrounds/fountain.gif',
+    '/backgrounds/SparkyWrite.webp',
+    '/backgrounds/fountain.webp',
 ];
 

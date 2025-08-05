@@ -6,11 +6,15 @@ import { BlockPattern } from './svgs/BlockPattern';
 import { Diamond } from './svgs/Diamond';
 import { LineDiamond } from './svgs/LineDiamond';
 import { LineDiamondVertical } from './svgs/LineDiamondVertical';
-import { BlockPatternVertical } from './svgs/BlockPatternVertical';
+import { RockFilter } from '@/components/RockFilter/RockFilter';
 
 export default function Sidebar() {
     return (
-        <div className="p-4 sm:pb-4 pb-8 flex flex-col w-full lg:w-[302px] lg:border-r border-b lg:border-b-0 border-accent bg-background justify-between items-center gap-4">
+        <div className="p-4 sm:pb-4 pb-8 flex flex-col w-full lg:w-[302px] lg:border-r border-b lg:border-b-0 border-border bg-background justify-between items-center gap-4 relative">
+
+            {/* filter */}
+            <RockFilter />
+
             <div className="w-full items-center">
                 <div className="w-full flex items-center justify-center flex-col">
                     <BlockPattern />
@@ -47,11 +51,11 @@ export default function Sidebar() {
                     </div>
 
                     <div className="flex flex-col gap-3 text-left">
-                        <p className="italic font-bold text-xl md:text-[15px] leading-normal px-5 text-main">
+                        <p className="italic font-bold text-xl md:text-[15px] leading-normal px-5 text-header">
                             {/* Your 24-Hour Creative Sandbox */}
                             More Details Coming Soon...
                         </p>
-                        <p className="italic font-normal text-base sm:text-[12px] text-balance leading-normal w-full px-5 text-primary">
+                        <p className="italic font-normal text-textalt sm:text-[12px] text-balance leading-normal w-full px-5 ">
                             Join us at SFU Burnaby Campus from October 4th to
                             5th for StormHacks 2025. This is one of Canada&apos;s
                             largest hackathons, a place where innovators like you

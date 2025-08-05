@@ -32,14 +32,6 @@ export default function Home() {
 
     return (
         <div className="font-catriel h-screen w-full relative overflow-x-hidden sm:overflow-hidden bg-[#0C0C0B]">
-            {/*grain effect*/}
-            {/* <Image
-                src="/assets/anim-background.gif"
-                height={10}
-                width={272}
-                alt="horizontal pattern"
-                className="absolute z-30 w-full h-full object-cover pointer-events-none mix-blend-color-dodge"
-            /> */}
             <AmbiancePlayer />
 
             {/*background tiling*/}
@@ -50,12 +42,13 @@ export default function Home() {
                         bg-center
                         bg-repeat
                         w-[250%] h-[250%]
-                        left-[-50%] top-[-25%]
+                        left-[-100%] top-[-100%]
                         rotate-45
                         origin-center"
                     style={{
-                        background: `url('/assets/pattern-element-buffer-${mode}.svg')`,
+                        background: `url('/assets/pattern-element-buffer.svg')`,
                     }}
+                    data-demon='background'
                 />
             </div>
 
@@ -70,13 +63,15 @@ export default function Home() {
                             <TimerDisplay />
                             <TimerDialog
                                 mobileTriggerButton={<HoverEffectButton
+                                    style={{ width: "40px", aspectRatio: 1 }}
                                     onClick={() => setShowSettings(!showSettings)}
                                 >
                                     <Image
-                                        src={`/assets/settings-${mode}.svg`}
+                                        src={`/assets/gear.svg`}
                                         height={40}
                                         width={40}
                                         alt="Open Settings Modal"
+                                        style={{ width: "32px" }}
                                     />
                                 </HoverEffectButton>}
                                 mobileShow={showSettings}

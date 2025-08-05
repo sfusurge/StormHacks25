@@ -4,7 +4,7 @@ import { CSSProperties, ReactNode, useState } from "react";
 import { masterVolumeAtom, ambianceVolumesAtom } from "@/components/AmbiancePlayer";
 import style from "./ambianceDialog.module.css";
 
-export function AmbianceDialog({ onClose, mobileMode = false, mobileTriggerButton, mobileShow }: { onClose: () => void, mobileMode?: boolean, mobileTriggerButton?: ReactNode, mobileShow?:boolean }) {
+export function AmbianceDialog({ onClose, mobileMode = false, mobileTriggerButton, mobileShow }: { onClose: () => void, mobileMode?: boolean, mobileTriggerButton?: ReactNode, mobileShow?: boolean }) {
     const [masterVolume, setMasterVolume] = useAtom(masterVolumeAtom);
     const [volumes, setVolumes] = useAtom(ambianceVolumesAtom);
 
@@ -12,14 +12,18 @@ export function AmbianceDialog({ onClose, mobileMode = false, mobileTriggerButto
 
     return (
         <Dialog title="Sound Settings" onClose={onClose} mobileMode={mobileMode} mobileTriggerButton={mobileTriggerButton} mobileShow={mobileShow}>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", width:"100%" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", width: "100%" }}>
                 <div>
                     <p className={style.header}>Music Volume</p>
                     <div className={style.row}>
-                        <img src="/assets/mute.svg" alt="" />
+                        <img src="/assets/mute.svg" alt=""
+                            data-demon="primary"
+                        />
                         <Slider initialVal={masterVolume * 100} onChange={(val) => setMasterVolume(val)}
                         />
-                        <img src="/assets/fullSound.svg" alt="" />
+                        <img src="/assets/fullSound.svg" alt=""
+                            data-demon="primary"
+                        />
                     </div>
                 </div>
 
@@ -58,16 +62,29 @@ export function Slider({ initialVal, onChange: _onChange }: { initialVal: number
 
     return <div style={{
         "--progress": val / 100,
-        width:"100%"
+        width: "100%"
     } as CSSProperties} className={style.sliderWrapper}>
         <input type="range" min={0} max={100}
-
             className={style.slider}
             onChange={(e) => {
                 const newVal = parseInt(e.target.value);
                 setVal(newVal);
                 _onChange(newVal / 100)
             }}
+        />
+    </div>
+}
+
+export function ProgressBar({ val }: { val: number }) {
+    return <div style={{
+        "--progress": val / 100,
+        width: "100%",
+        pointerEvents: "none"
+    } as CSSProperties} className={style.sliderWrapper}>
+        <input type="range" min={0} max={100}
+            className={style.slider}
+            readOnly
+            value={val}
         />
     </div>
 }

@@ -1,6 +1,7 @@
 import { CSSProperties, ReactNode } from "react";
 import style from "./dialog.module.css"
 import HoverEffectButton from "@/components/HoverEffectButton";
+import { RockFilter } from "@/components/RockFilter/RockFilter";
 
 export function Dialog({ title, onClose, mobileMode, children, mobileTriggerButton, mobileShow }: {
     mobileMode: boolean,
@@ -18,8 +19,10 @@ export function Dialog({ title, onClose, mobileMode, children, mobileTriggerButt
 
     const dialogContent = (
         <div className={`${style.dialog} ${mobileMode ? style.mobile : ""}`}>
-            <div data-demon-shift='accent' className={style.decorBar}></div>
-            <div data-demon-shift='accent' className={style.decorBar} style={{ top: "unset", bottom: "0" }}></div>
+            <RockFilter />
+
+            <div data-demon='border' className={style.decorBar}></div>
+            <div data-demon='border' className={style.decorBar} style={{ top: "unset", bottom: "0" }}></div>
 
             <div className={style.titleBar}>
                 <p className={style.title}>{title}</p>
@@ -38,11 +41,11 @@ export function Dialog({ title, onClose, mobileMode, children, mobileTriggerButt
                 {mobileShow && <>
                     <div className={style.dialogBackdrop} onClick={handleBackdropClick} />
                     <div className="w-full h-full fixed top-0 left-0 flex justify-center items-center z-[1002] pointer-events-none">
+                        
 
-                    {dialogContent}
+                        {dialogContent}
                     </div>
-                </>
-                }
+                </>}
                 {mobileTriggerButton && (
                     <div className={`${mobileShow ? "z-[1001]" : "flex"}`}>
                         {mobileTriggerButton}
@@ -64,8 +67,8 @@ export function HorizontalDivider() {
             justifyContent: "space-around",
             width: "100%"
         }}>
-            <div className={style.divider} data-demon-shift='accent'></div>
-            <div className={style.divider} style={{ transform: "scale(-1, 1)" }} data-demon-shift='accent'></div>
+            <div className={style.divider} data-demon='border'></div>
+            <div className={style.divider} style={{ transform: "scale(-1, 1)" }} data-demon='border'></div>
         </div>
     );
 }

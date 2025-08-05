@@ -83,6 +83,7 @@
 }
 
 .divider {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,14 +95,19 @@
 .divider::before {
     content: "";
     height: 0;
-    width: 75px;
-    flex: 1;
+    width: 65px;
     margin: 1rem 0;
-    border-top: 2px solid var(--color-accent);
+    margin-right: 15px;
+    flex: 1;
+    border-top: 1px solid var(--color-border-s);
 }
 
 .divider::after {
     content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
     width: 16px;
     height: 16px;
 

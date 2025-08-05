@@ -4,12 +4,13 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                main: 'var(--color-main)',
-                primary: 'var(--color-primary)',
-                accent: 'var(--color-accent)',
-                background: 'var(--color-background)',
-                border: 'var(--color-border)',
-                'decor': 'var(--color-decor)',
+                header:"var(--color-header)",
+                textalt: "var(--color-special-text)",
+                primary: "var(--color-primary)",
+                border: "var(--color-border)",
+                borderalt: "var(--color-border2)",
+                background: "var(--color-background)",
+                backgroundalt: "var(--color-background2)"
             },
             mixBlendMode: {
                 'color-dodge': 'color-dodge',

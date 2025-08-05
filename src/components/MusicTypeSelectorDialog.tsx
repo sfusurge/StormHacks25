@@ -17,7 +17,7 @@ export function MusicTypeSelectorDialog({ onClose: _onClose, mobileMode = false,
         mobileShow={show}
         mobileMode={mobileMode}
     >
-        <div style={{ display: "flex", gap: "1rem", justifyContent: "space-between", width: "100%" }}>
+        <div style={{ display: "flex", gap: "1.5rem", justifyContent: "space-between", width: "100%" }}>
             <HoverEffectButton
                 onClick={() => setLib("calm")}
                 style={{ padding: "0.1rem 0.75rem" }}
@@ -26,13 +26,6 @@ export function MusicTypeSelectorDialog({ onClose: _onClose, mobileMode = false,
             >
                 Calm
             </HoverEffectButton>
-            {/*<HoverEffectButton*/}
-            {/*    style={{ padding: "0.1rem 0.75rem" }}*/}
-            {/*    onClick={() => {*/}
-            {/*        setLib("ambiance");*/}
-            {/*    }}>*/}
-            {/*    Ambiance*/}
-            {/*</HoverEffectButton>*/}
             <HoverEffectButton
                 style={{ padding: "0.1rem 0.75rem" }}
                 onClick={() => {

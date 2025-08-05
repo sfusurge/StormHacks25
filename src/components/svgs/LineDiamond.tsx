@@ -12,11 +12,12 @@ export function LineDiamond({ height, width, className }: LineDiamondProps) {
 
     return (
         <Image
-            src={`/assets/line-diamond-${mode}.svg`}
+            src={`/assets/line-diamond.svg`}
             height={height}
             width={width}
             alt="horizontal pattern"
             className={`flex-1 ${className}`}
+            data-demon="border"
         />
     );
 }

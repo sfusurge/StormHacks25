@@ -12,9 +12,10 @@ export function LineDiamondVertical({ height, width, className }: LineDiamondVer
     const { mode } = useTheme();
     return (
         <Image
-            src={`/assets/line-diamond-${mode}-v.svg`}
+            src={`/assets/line-diamond-v.svg`}
             height={height}
             width={width}
+            data-demon="border"
             alt="vertical pattern"
             className={`flex-1 ${className}`}
         />

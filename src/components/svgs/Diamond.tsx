@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { useTheme } from '../ThemeProvider';
 
 export interface DiamondProps {
     height: `${number}` | number;
@@ -7,14 +6,14 @@ export interface DiamondProps {
 }
 
 export function Diamond({ height, width }: DiamondProps) {
-    const { mode } = useTheme();
 
     return (
         <Image
-            src={`/assets/diamond-${mode}.svg`}
+            src={`/assets/diamond.svg`}
             height={height}
             width={width}
             alt="diamond"
+            data-demon="border"
         />
     );
 }

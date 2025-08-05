@@ -19,7 +19,7 @@ const HoverEffectButton = ({
     return (
         <button
             style={{ ...style }}
-            className={`cursor-pointer group relative transition-all duration-300 border-[0.643px] border-decor hover:border-main hover:shadow-[0_0_7px_0_var(--color-decor)] ${className} ${active ? "shadow-[0_0_12px_0_var(--color-decor)] border-main": ""}`}
+            className={`bg-backgroundalt flex justify-center items-center cursor-pointer group relative transition-all duration-300 border-[0.643px] border-primary hover:border-main hover:shadow-[0_0_7px_0_var(--color-decor)] ${className} ${active ? "shadow-[0_0_12px_0_var(--color-decor)] border-main": ""}`}
             onClick={onClick}
             type={type}
         >

@@ -5,7 +5,6 @@ import { useRef } from 'react';
 import { useAtomValue, useSetAtom } from 'jotai';
 import HoverEffectButton from '@/components/HoverEffectButton';
 import style from './Timer.module.css';
-import { useTheme } from '../ThemeProvider';
 import { BlockPatternVertical } from '../svgs/BlockPatternVertical';
 import {
     pausedAtom,
@@ -14,6 +13,7 @@ import {
     toggleTimerAtom,
     setTimeAtom
 } from './TimerAtom'
+import { RockFilter } from '@/components/RockFilter/RockFilter';
 
 type TimerInputProps = {
     minutes: string;
@@ -105,21 +105,20 @@ export default function Timer() {
     const toggleTimer = useSetAtom(toggleTimerAtom);
     const setTime = useSetAtom(setTimeAtom);
 
-    const { mode } = useTheme();
-
     const minRef = useRef<HTMLInputElement>(null);
     const secRef = useRef<HTMLInputElement>(null);
 
     return (
         <>
             {/* Mobile */}
-            <div className='flex flex-row gap-0 items-center border border-decor bg-background w-full py-2 px-3 sm:hidden justify-between'>
+            <div className='flex flex-row gap-0 items-center border border-border bg-background w-full py-2 px-3 sm:hidden justify-between relative'>
                 <div className="flex flex-row gap-1.5">
                     <Image
-                        src={`/assets/clock-${mode}.svg`}
+                        src={`/assets/clock.svg`}
                         height={32}
                         width={32}
                         alt="clock"
+                        data-demon="primary"
                     />
                     <TimerInput
                         minutes={minutes}
@@ -141,15 +140,17 @@ export default function Timer() {
             </div>
 
             {/* Desktop */}
-            <div className="hidden sm:flex mt-auto mb-8 relative border border-accent bg-background h-11">
+            <div className="hidden sm:flex mt-auto mb-8 relative border border-border bg-background h-11">
+                <RockFilter />
                 <div className="flex justify-between items-center h-full">
                     <BlockPatternVertical className='h-[44px] mr-1.5' />
-                    <div className="flex justify-between px-2 items-center w-[153px] gap-2 h-[33px] p-[6.427px] flex-shrink-0 border-[0.643px] border-accent bg-[#06060599]">
+                    <div className="flex justify-between px-2 items-center w-[153px] gap-2 h-[33px] p-[6.427px] flex-shrink-0 border-[0.643px] border-borderalt bg-backgroundalt">
                         <div className="flex flex-row gap-0 justify-between items-center">
                             <Image
-                                src={`/assets/clock-${mode}.svg`}
+                                src={`/assets/clock.svg`}
                                 height={15}
                                 width={16}
+                                data-demon="primary"
                                 alt="clock"
                             />
                             <TimerInput

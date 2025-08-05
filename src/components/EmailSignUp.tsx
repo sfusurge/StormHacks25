@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { toast } from 'sonner';
-import { useTheme } from './ThemeProvider';
 import HoverEffectButton from './HoverEffectButton';
 
 export default function EmailSignup() {
@@ -9,7 +8,6 @@ export default function EmailSignup() {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [success, setSuccess] = useState<boolean | null>(null);
 
-    const { mode } = useTheme();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -56,14 +54,15 @@ export default function EmailSignup() {
     return (
         <form
             onSubmit={handleSubmit}
-            className="w-full sm:max-w-md bg-[#06060599] border border-border py-4 sm:py-2 flex items-center"
+            className="w-full sm:max-w-md bg-backgroundalt border border-borderalt py-4 sm:py-2 flex items-center"
         >
             <div className="relative left-2.5 w-5 h-5 mr-4">
                 <Image
-                    src={`/assets/mail-${mode}.svg`}
+                    src={`/assets/mail.svg`}
                     alt="email icon"
                     fill
                     className="object-contain"
+                    data-demon="primary"
                 />
             </div>
             <input
@@ -76,12 +75,13 @@ export default function EmailSignup() {
                 className="bg-transparent flex-1 w-full text-base sm:text-xs italic font-semibold pl-1 pr-6 placeholder-primary text-main focus:outline-none [&::placeholder]:not-italic [&::placeholder]:font-normal"
                 disabled={isLoading}
             />
-            <HoverEffectButton type="button"className='relative flex items-center justify-center right-4 w-10 h-7 border-border cursor-pointer border-[0.735px] hover:opacity-80 transition-opacity duration-200'>
+            <HoverEffectButton type="button"className='relative flex items-center justify-center right-4 w-10 h-7  cursor-pointer  hover:opacity-80 transition-opacity duration-200'>
                 <Image
-                    src={`/assets/submit-${mode}.svg`}
+                    src={`/assets/submit.svg`}
                     alt="submit arrow"
                     width={24}
                     height={16}
+                    data-demon="primary"
                     className="object-contain"
                 />
                 </HoverEffectButton>
