@@ -16,10 +16,11 @@ const HoverEffectButton = ({
     active?: boolean
 }>) => {
 
+
     return (
         <button
             style={{ ...style }}
-            className={`bg-backgroundalt flex justify-center items-center cursor-pointer group relative transition-all duration-300 border-[0.643px] border-primary hover:border-main hover:shadow-[0_0_7px_0_var(--color-decor)] ${className} ${active ? "shadow-[0_0_12px_0_var(--color-decor)] border-main": ""}`}
+            className={`bg-backgroundalt flex justify-center items-center cursor-pointer group relative transition-all duration-300 border-[0.643px] border-primary hover:border-border hover:shadow-[0_0_6px_0_var(--color-primary)] ${className} ${active ? "shadow-[0_0_12px_0_var(--color-primary)] border-border" : ""}`}
             onClick={onClick}
             type={type}
         >

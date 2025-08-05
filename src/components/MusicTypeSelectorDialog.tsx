@@ -19,7 +19,7 @@ export function MusicTypeSelectorDialog({ onClose: _onClose, mobileMode = false,
     >
         <div style={{ display: "flex", gap: "1.5rem", justifyContent: "space-between", width: "100%" }}>
             <HoverEffectButton
-                onClick={() => setLib("calm")}
+                onClick={() => {setLib("calm")}}
                 style={{ padding: "0.1rem 0.75rem" }}
                 active={currentType==="calm"}
                 aria-pressed={currentType === "calm"}

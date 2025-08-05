@@ -56,7 +56,7 @@ export default function EmailSignup() {
     return (
         <form
             onSubmit={handleSubmit}
-            className="w-full sm:max-w-md bg-backgroundalt border border-borderalt py-4 sm:py-2 flex items-center"
+            className="w-full sm:max-w-md bg-backgroundalt border border-borderalt py-4 sm:py-2 flex items-center duration-300 ease-out"
         >
             <div className="relative left-2.5 w-5 h-5 mr-4">
                 <Image

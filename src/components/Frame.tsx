@@ -10,23 +10,26 @@ import { Diamond } from '@/components/svgs/Diamond';
 export const currentBackgroundIndexAtom = atom(0);
 
 export function CurrentBackgroundMobile({ currentBackground }: FrameProps) {
-    const { mode } = useTheme();
-    const currentBackgroundIndex = useAtomValue(currentBackgroundIndexAtom);
     const [loading, setLoading] = useState(true);
-
-    const backgrounds = mode === 'angel' ? AngelBackgrounds : DemonBackgrounds;
-    const currentBg = backgrounds[currentBackgroundIndex];
+    const [imageUrl, setUrl] = useState<string | undefined>(undefined);
 
     useEffect(() => {
         setLoading(true);
-    }, [currentBackgroundIndex]);
+        if (imageUrl) {
+            setTimeout(() => {
+                setUrl(currentBackground);
+            }, 300);
+        } else {
+            setUrl(currentBackground);
+        }
+    }, [currentBackground])
 
     return (
         <div className="relative w-full h-[75dvh]">
-            <Image
-                key={currentBg}
-                src={currentBg}
-                alt="background"
+            <img
+                key={imageUrl}
+                src={imageUrl}
+                alt="background banner"
                 height={1000}
                 width={1800}
                 className="object-cover w-full h-[75dvh]"
@@ -34,7 +37,7 @@ export function CurrentBackgroundMobile({ currentBackground }: FrameProps) {
                 style={{ opacity: loading ? 0 : 1 }}
                 onLoad={() => setLoading(false)}
             />
-            
+
             {loading && (
                 <div className="absolute inset-0 flex items-center justify-center bg-[var(--color-background)]">
                     <Diamond height={32} width={24} />
