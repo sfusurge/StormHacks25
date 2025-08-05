@@ -4,6 +4,8 @@ import './globals.css';
 import { Toaster } from 'sonner';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { TimerController } from '@/components/Timer/TimerController';
+import Script from 'next/script';
+import { GA } from '@/app/GA';
 
 export const metadata: Metadata = {
     title: 'StormHacks 2025',
@@ -57,6 +59,7 @@ export default function RootLayout({
             <link rel="shortcut icon" href="/favicon.ico" />
             <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
             <link rel="manifest" href="/site.webmanifest" />
+            <GA />
             <body className={`${catriel.variable} antialiased`}>
                 <ThemeProvider>
                     {children}
