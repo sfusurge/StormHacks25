@@ -17,6 +17,7 @@ import { Diamond } from './svgs/Diamond';
 import { MusicTypeSelectorDialog } from '@/components/MusicTypeSelectorDialog';
 import { AmbianceDialog } from '@/components/AmbianceDialog/AmbianceDialog';
 import { masterVolumeAtom } from '@/components/AmbiancePlayer';
+import {ScrollingText} from "@/components/ScrollingText";
 
 const trackIndexAtom = atom(0);
 
@@ -258,10 +259,11 @@ export default function Controls() {
                                     }
                                 </div>
 
-                                <div className="flex flex-col">
-                                    <p className="text-[12px] text-main font-bold">
-                                        {currentTitle}
-                                    </p>
+                                <div className="flex flex-col w-32">
+                                    <ScrollingText
+                                        text={currentTitle}
+                                        className="text-[12px] text-main font-bold"
+                                    />
                                     <p className="text-[10px] text-primary">
                                         {currentArtist}
                                     </p>
