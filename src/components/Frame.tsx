@@ -88,24 +88,23 @@ export default function Frame({ currentBackground }: FrameProps) {
                 }}
             />
 
-            {
-                loading && <div style={{
-                    backgroundColor: "var(--color-background)",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    position: "absolute",
-                    left: "2.87%",
-                    top: "50%",
-                    width: "calc(100% - (2 * 2.87%))",
-                    aspectRatio: "calc(872/511)",
-                    transform: "translate(0, -50%)",
-                    zIndex: 1
+            <div style={{
+                backgroundColor: "var(--color-background)",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                position: "absolute",
+                left: "2.87%",
+                top: "50%",
+                width: "calc(100% - (2 * 2.87%))",
+                aspectRatio: "calc(872/511)",
+                transform: "translate(0, -50%)",
+                zIndex: 1
 
-                }}>
-                    <Diamond height={32} width={24} />
-                </div>
-            }
+            }}>
+                <Diamond height={32} width={24} />
+            </div>
+
 
 
             <Image

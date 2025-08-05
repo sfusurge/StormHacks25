@@ -15,7 +15,6 @@
     "pg": "^8.16.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-timer-hook": "^4.0.5",
     "sonner": "^2.0.6",
     "use-sound": "^5.0.0"
   },
