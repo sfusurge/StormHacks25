@@ -12,6 +12,8 @@ export default function EmailSignup() {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        console.log("in submit");
+
         try {
             setIsLoading(true);
             const res = await fetch('/api/signup', {
@@ -75,7 +77,7 @@ export default function EmailSignup() {
                 className="bg-transparent flex-1 w-full text-base sm:text-xs italic font-semibold pl-1 pr-6 placeholder-primary text-main focus:outline-none [&::placeholder]:not-italic [&::placeholder]:font-normal"
                 disabled={isLoading}
             />
-            <HoverEffectButton type="button"className='relative flex items-center justify-center right-4 w-10 h-7  cursor-pointer  hover:opacity-80 transition-opacity duration-200'>
+            <HoverEffectButton type='submit' className='relative flex items-center justify-center right-4 w-10 h-7  cursor-pointer  hover:opacity-80 transition-opacity duration-200'>
                 <Image
                     src={`/assets/submit.svg`}
                     alt="submit arrow"
@@ -84,7 +86,7 @@ export default function EmailSignup() {
                     data-demon="primary"
                     className="object-contain"
                 />
-                </HoverEffectButton>
+            </HoverEffectButton>
         </form>
     );
 }
