@@ -20,10 +20,18 @@ export default function SwapBackground({
             <div className="flex justify-between items-center h-full">
                 <BlockPatternVertical className='h-11 mr-1.5' />
                 <HoverEffectButton
-                    className="bg-[#06060599] px-2 py-1 text-xs text-decor border-[0.643px] border-decor cursor-pointer h-[22px] w-[118px] flex items-center justify-center mr-3"
+                    className="cursor-pointer w-[24px] h-[24px] mr-3"
                     onClick={onChangeBackground}
                 >
-                    Swap Background
+                    <Image
+                        src={`/assets/swap-background.svg`}
+                        alt={'mode'}
+                        width={22}
+                        height={22}
+                        style={{ width: "22px" }}
+                        data-demon="primary"
+                    />
+
                 </HoverEffectButton>
 
                 <HoverEffectButton
