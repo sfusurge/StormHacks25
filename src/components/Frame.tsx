@@ -12,20 +12,35 @@ export const currentBackgroundIndexAtom = atom(0);
 export function CurrentBackgroundMobile({ currentBackground }: FrameProps) {
     const { mode } = useTheme();
     const currentBackgroundIndex = useAtomValue(currentBackgroundIndexAtom);
+    const [loading, setLoading] = useState(true);
 
     const backgrounds = mode === 'angel' ? AngelBackgrounds : DemonBackgrounds;
     const currentBg = backgrounds[currentBackgroundIndex];
 
+    useEffect(() => {
+        setLoading(true);
+    }, [currentBackgroundIndex]);
+
     return (
-        <Image
-            key={currentBg}
-            src={currentBg}
-            alt="background"
-            height={1000}
-            width={1800}
-            className="object-cover w-full h-[75dvh]"
-            loading='lazy'
-        />
+        <div className="relative w-full h-[75dvh]">
+            <Image
+                key={currentBg}
+                src={currentBg}
+                alt="background"
+                height={1000}
+                width={1800}
+                className="object-cover w-full h-[75dvh]"
+                loading='lazy'
+                style={{ opacity: loading ? 0 : 1 }}
+                onLoad={() => setLoading(false)}
+            />
+            
+            {loading && (
+                <div className="absolute inset-0 flex items-center justify-center bg-[var(--color-background)]">
+                    <Diamond height={32} width={24} />
+                </div>
+            )}
+        </div>
     );
 }
 

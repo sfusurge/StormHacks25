@@ -1,5 +1,3 @@
-import { useTheme } from '../ThemeProvider';
-
 export interface BlockPatternVerticalProps {
     className?: string;
 }

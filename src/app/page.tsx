@@ -42,7 +42,7 @@ export default function Home() {
                         bg-center
                         bg-repeat
                         w-[250%] h-[250%]
-                        left-[-100%] top-[-100%]
+                        left-[-50%] top-[-50%]
                         rotate-45
                         origin-center"
                     style={{
@@ -67,6 +67,7 @@ export default function Home() {
                                     onClick={() => setShowSettings(!showSettings)}
                                 >
                                     <Image
+                                        data-demon='primary'
                                         src={`/assets/gear.svg`}
                                         height={40}
                                         width={40}

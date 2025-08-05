@@ -60,9 +60,9 @@ export function CurrentTrackInfo() {
     );
 
     return (
-        <div className="flex flex-col flex-1 min-w-0">
-            <p className="font-bold truncate">{currentTrack.title}</p>
-            <p className="text-primary truncate">{currentTrack.artist}</p>
+        <div className="flex flex-col flex-1 min-w-0 pr-3">
+            <ScrollingText text={`${currentTrack.title}`} className='font-bold' />
+            <ScrollingText text={`${currentTrack.artist}`} className='font-primary' />
         </div>
     );
 }
@@ -218,6 +218,7 @@ export default function Controls() {
                         </HoverEffectButton>
                         <HoverEffectButton onClick={playNext} className="flex-1 min-w-6 max-w-14" style={{ aspectRatio: 1 }}>
                             <Image
+                                data-demon='primary'
                                 src={`/assets/prev.svg`}
                                 height={24}
                                 width={24}
@@ -237,6 +238,7 @@ export default function Controls() {
                                 style={{ aspectRatio: 1 }}
                             >
                                 <Image
+                                    data-demon='primary'
                                     src={`/assets/sound.svg`}
                                     height={24}
                                     width={24}
@@ -252,7 +254,7 @@ export default function Controls() {
             </div>
 
             {/* DESKTOP */}
-            <div className="hidden sm:block mt-auto mb-4 relative border border-border bg-background sm:w-[80%] xl:w-[50%] h-[43px]">
+             <div className="hidden sm:block mt-auto mb-4 relative border border-border bg-background sm:w-[80%] xl:w-[50%] h-[43px]">
                 <RockFilter />
                 <div className="flex justify-between h-full">
                     <div className="flex flex-row gap-2">
