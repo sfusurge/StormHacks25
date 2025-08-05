@@ -20,6 +20,19 @@ export const calmMusicLibrary: MusicItem[] = [
     { title: "The Serenity of Sentience", artist: "Michael Levy", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/michael_levy_the_serentity_of_sentience.mp3" },
     { title: "The Barbiton (Lyre of Sappho)", artist: "Seikilo", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/seikilo_the_barbiton_lyre_of_sappho.mp3" },
     { title: "With You, Friends", artist: "Skrillex", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/skrillex_with_you_friends.mp3" },
+    { title: "Summer", artist: "Joe Hisaishi", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/hisaishi_joe_summer_and_..._nocturne_op9_no2_.mp3" },
+    { title: "Let Go", artist: "BTS", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/bts_let_go.mp3" },
+    { title: "Ditto", artist: "NewJeans", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/newjeans_ditto.mp3" },
+    { title: "Flower Dance", artist: "Faker", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/faker_flower_dance.mp3" },
+    { title: "Glimpse of Us", artist: "Birru", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/birru_glimpse_of_us.mp3" },
+    { title: "Unravel", artist: "TK from Ling Tosite Sigure", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/tokyo_ghoul_unravel.mp3" },
+    { title: "Fly Me to the Moon", artist: "Frank Sinatra", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/frank_sinatra_fly_me_to_the_moon.mp3" },
+    { title: "Here I Am", artist: "Boys Planet", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/boys_planet_here_i_am.mp3" },
+    { title: "From the Start", artist: "Laufey", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/laufey_from_the_start.mp3" },
+    { title: "Half Moon", artist: "DEAN", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/dean_d_half_moon.mp3" },
+    { title: "Sway", artist: "Michael Bublé", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/michael_bubly_sway.mp3" },
+    { title: "Everything Goes On", artist: "Porter Robinson", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/porter_robinson_everything_goes_on.mp3" },
+    { title: "Shelter", artist: "Porter Robinson & Madeon", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/porter_robinson_and_madeon_shelter.mp3" },
 ];
 
 export const epicMusicLibrary: MusicItem[] = [
