@@ -48,6 +48,7 @@ export function AmbiancePlayer() {
 
                 if (vol > 0 && ref.paused) {
                     ref.play();
+                    ref.src = opt.file;
                 } else if (vol === 0 && !ref.paused) {
                     ref.pause();
                 }
@@ -62,8 +63,6 @@ export function AmbiancePlayer() {
                     key={opt.name}
                     loop
                     ref={opt.ref}
-                    src={opt.file}
-                    preload="auto"
                 />
             ))}
         </div>

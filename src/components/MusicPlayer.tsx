@@ -84,7 +84,7 @@ export default function Controls() {
         [currentTrack],
     );
 
-    const { mode } = useTheme();
+    const [initialPlay, setInitial] = useState(true);
 
     useEffect(() => {
         if (!audioRef.current) {
@@ -94,7 +94,10 @@ export default function Controls() {
         audioRef.current.pause();
         audioRef.current.currentTime = 0;
 
-        audioRef.current.src = currentTrack.file;
+        if (!initialPlay) {
+
+            audioRef.current.src = currentTrack.file;
+        }
         if (isPlaying) {
             const playPromise = audioRef.current.play();
             if (playPromise !== undefined) {
@@ -118,7 +121,11 @@ export default function Controls() {
             if (isPlaying) {
                 audioRef.current.pause();
             } else {
-                audioRef.current.play();
+                setInitial(false);
+                setTimeout(() => {
+                    audioRef.current!.src = currentTrack.file;
+                    audioRef.current!.play();
+                }, 0)
             }
             setIsPlaying(!isPlaying);
         }
@@ -206,7 +213,7 @@ export default function Controls() {
                                 height={24}
                                 width={24}
                                 alt={isPlaying ? 'Pause' : 'Play'}
-                                style={{ height: isPlaying ? "16px" : "auto", width: !isPlaying ? "14px" : "auto" }}
+                                style={{ height: "16px" }}
                             />
                         </HoverEffectButton>
                         <HoverEffectButton onClick={playNext} className="flex-1 min-w-6 max-w-14" style={{ aspectRatio: 1 }}>
@@ -300,7 +307,7 @@ export default function Controls() {
                             }
                             <HoverEffectButton
                                 onClick={() => {
-                                    setShowAmbianceMenu(true);
+                                    setShowAmbianceMenu(!showAmbianceMenu);
                                 }}
                                 className="self-center w-[24px] h-[24px]"
                             >
@@ -346,7 +353,7 @@ export default function Controls() {
                                 height={12}
                                 width={12}
                                 alt={isPlaying ? 'Pause' : 'Play'}
-                                style={{ height: isPlaying ? "12px" : "auto", width: !isPlaying ? "10px" : "auto" }}
+                                style={{ height: "16px" }}
                             />
                         </HoverEffectButton>
                         <HoverEffectButton
