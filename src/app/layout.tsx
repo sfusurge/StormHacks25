@@ -9,6 +9,13 @@ export const metadata: Metadata = {
     title: 'StormHacks 2025',
     description:
         "SFU Surge's 24-hour hackathon at SFU Burnaby Campus from October 4th to 5th, 2025.",
+    openGraph: {
+        images: [
+            {
+                url: "https://stormhacks.com/stormhacks25_preview.jpg"
+            }
+        ]
+    }
 };
 
 const catriel = localFont({
@@ -64,7 +71,7 @@ export default function RootLayout({
                             },
                         }}
                     />
-                    <TimerController/>
+                    <TimerController />
                 </ThemeProvider>
             </body>
         </html>
