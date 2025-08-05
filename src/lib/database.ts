@@ -7,7 +7,10 @@ export const database = knex({
 
 export async function signUpEmail(email: string) {
     try {
-        await database('sh_25_emails').insert({ email }, '*');
+        await database('sh_25_emails')
+            .insert({ email }, '*')
+            .onConflict('email')
+            .ignore();
     } catch (e) {
         console.error(`Failed to sign up ${email} for update`, e);
         throw e;
