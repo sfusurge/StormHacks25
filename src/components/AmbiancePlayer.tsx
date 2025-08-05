@@ -1,8 +1,9 @@
 import { useAtom } from "jotai";
 import { useEffect, useRef } from "react";
 import { atom } from "jotai";
+import { atomWithStorage } from 'jotai/utils';
 
-export const masterVolumeAtom = atom(1);
+export const masterVolumeAtom = atomWithStorage('masterVolume', 1);
 
 export const ambianceVolumesAtom = atom({
     Rain: 0,
@@ -47,8 +48,8 @@ export function AmbiancePlayer() {
                 ref.volume = masterVolume * vol;
 
                 if (vol > 0 && ref.paused) {
-                    ref.play();
                     ref.src = opt.file;
+                    ref.play().catch(console.log);
                 } else if (vol === 0 && !ref.paused) {
                     ref.pause();
                 }

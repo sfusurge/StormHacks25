@@ -85,30 +85,33 @@ export default function Controls() {
     );
 
     const [initialPlay, setInitial] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        if (!audioRef.current) {
+        if (!audioRef.current || isLoading) {
             return;
         }
 
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
+        const audio = audioRef.current;
 
-        if (!initialPlay) {
-
-            audioRef.current.src = currentTrack.file;
+        if (audio.src !== currentTrack.file) {
+            audio.src = currentTrack.file;
         }
-        if (isPlaying) {
-            const playPromise = audioRef.current.play();
+
+        if (isPlaying && audio.paused) {
+            const playPromise = audio.play();
             if (playPromise !== undefined) {
                 playPromise
                     .then(() => setIsPlaying(true))
-                    .catch(() => {
+                    .catch((error) => {
+                        console.log('Play interrupted:', error);
                         setIsPlaying(false);
                     });
             }
+        } else if (!isPlaying && !audio.paused) {
+            audio.pause();
         }
-    }, [currentTrack.file, currentTrackIndex, isPlaying]);
+    }, [currentTrack.file, currentTrackIndex, isPlaying, isLoading]);
 
     useEffect(() => {
         if (audioRef.current) {
@@ -116,34 +119,49 @@ export default function Controls() {
         }
     }, [masterVolume])
 
-    const togglePlayPause = () => {
-        if (audioRef.current) {
-            if (isPlaying) {
-                audioRef.current.pause();
-            } else {
+    const togglePlayPause = async () => {
+        if (!audioRef.current) return;
+
+        setIsLoading(true);
+
+        if (isPlaying) {
+            audioRef.current.pause();
+            setIsPlaying(false);
+        } else {
+            if (initialPlay) {
                 setInitial(false);
-                setTimeout(() => {
-                    audioRef.current!.src = currentTrack.file;
-                    audioRef.current!.play();
-                }, 0)
+                audioRef.current.src = currentTrack.file;
             }
-            setIsPlaying(!isPlaying);
+
+            try {
+                await audioRef.current.play();
+                setIsPlaying(true);
+            } catch (error) {
+                console.log('Play failed:', error);
+                setIsPlaying(false);
+            }
         }
+
+        setIsLoading(false);
     };
 
     const playNext = () => {
+        setIsLoading(true);
         const nextIndex = (currentTrackIndex + 1) % musicLib.length;
         setCurrentTrackIndex(nextIndex);
         setIsPlaying(true);
+        setIsLoading(false);
     };
 
     const playPrevious = () => {
+        setIsLoading(true);
         const prevIndex =
             currentTrackIndex === 0
                 ? musicLib.length - 1
                 : currentTrackIndex - 1;
         setCurrentTrackIndex(prevIndex);
         setIsPlaying(true);
+        setIsLoading(false);
     };
 
     const handleAudioEnded = () => {
