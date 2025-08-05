@@ -3,11 +3,11 @@
 import { useEffect, useRef } from 'react';
 import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 import useSound from 'use-sound';
-import { 
-    pausedAtom, 
-    minutesAtom, 
-    secondsAtom, 
-    remainingTimeAtom 
+import {
+    pausedAtom,
+    minutesAtom,
+    secondsAtom,
+    remainingTimeAtom
 } from './TimerAtom';
 
 export function TimerController() {
@@ -23,11 +23,17 @@ export function TimerController() {
     const [play] = useSound(soundUrl);
 
     const interval = useRef<ReturnType<typeof setInterval> | undefined>(undefined);
+    const initialTime = useRef<{ minutes: string; seconds: string } | null>(null);
 
     useEffect(() => {
         if (!paused) {
             const m = parseInt(minutes);
             const s = parseInt(seconds);
+            
+            if (!initialTime.current) {
+                initialTime.current = { minutes, seconds };
+            }
+            
             setRemainingTime(m * 60 + s);
 
             interval.current = setInterval(() => {
@@ -40,6 +46,14 @@ export function TimerController() {
                     if (newTime <= 0) {
                         play();
                         setPaused(true);
+                        
+                        if (initialTime.current) {
+                            setMinutes(initialTime.current.minutes);
+                            setSeconds(initialTime.current.seconds);
+                        }
+                        
+                        initialTime.current = null;
+                        
                         return 0;
                     }
                     
