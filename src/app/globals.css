@@ -1,28 +1,79 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @config '../../tailwind.config.js';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+    
+html {
+
+    --color-header: #F1ECEB;
+    --color-special-text: #A7928E;
+    --color-primary: #d0a79d;
+    --color-border: #91837c;
+    --color-border-s: #91837c;
+    --color-border2: #5d4e4b;
+    --color-background: #231f1f;
+    --color-background2: #151311;
+}
+
+[data-demon='border'], [data-demon='primary'], [data-demon='background'], [data-demon='title']{
+    filter: hue-rotate(-0deg) saturate(1)  brightness(1);
+    transition-property: color, border-color, filter ;
+    transition-duration: 300ms ;
+    transition-timing-function: ease-out;
+}
+
+[data-mode='demon'] {
+    
+    --color-header: #c11326;
+    --color-special-text: #c11326;
+    --color-primary: #c11326;
+    --color-border: #c11326;
+    --color-border2: #c11326;
+
+    [data-demon='border']{
+        filter: hue-rotate(-20deg) saturate(18) brightness(.8);
+    }
+
+    [data-demon='primary']{
+        filter: hue-rotate(-15deg) brightness(0.8) saturate(10) ;
+    }
+
+    [data-demon='background']{
+        filter: saturate(25) brightness(0.7);
+    }
+
+     [data-demon='title']{
+        filter: brightness(0.35) saturate(100) ;
+    }
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: var(--color-primary);
 }
 
+p, span {
+    transition: color 300ms ease-out;
+}
+
+img {
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 300ms ease-out;
+    user-select: none;
+}

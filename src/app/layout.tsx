@@ -2,11 +2,22 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import { Toaster } from 'sonner';
+import { ThemeProvider } from '@/components/ThemeProvider';
+import { TimerController } from '@/components/Timer/TimerController';
+
+import { GA } from '@/app/GA';
 
 export const metadata: Metadata = {
     title: 'StormHacks 2025',
     description:
         "SFU Surge's 24-hour hackathon at SFU Burnaby Campus from October 4th to 5th, 2025.",
+    openGraph: {
+        images: [
+            {
+                url: "https://stormhacks.com/stormhacks25_preview.webp"
+            }
+        ]
+    }
 };
 
 const catriel = localFont({
@@ -42,19 +53,29 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" data-mode="angel">
+            <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+            <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+            <link rel="shortcut icon" href="/favicon.ico" />
+            <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+            <link rel="manifest" href="/site.webmanifest" />
+            <GA />
             <body className={`${catriel.variable} antialiased`}>
-                {children}
-                <Toaster
-                    position='top-center'
-                    toastOptions={{
-                        style: {
-                            backgroundColor: '#06060599',
-                            borderColor: '#372F2F',
-                            color: '#a7928e',
-                        },
-                    }}
-                />
+                <ThemeProvider>
+                    {children}
+                    <Toaster
+                        position="top-center"
+                        toastOptions={{
+                            style: {
+                                backgroundColor: '#06060599',
+                            },
+                            classNames: {
+                                toast: '!text-primary !border-border',
+                            },
+                        }}
+                    />
+                    <TimerController />
+                </ThemeProvider>
             </body>
         </html>
     );

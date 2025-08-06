@@ -1,34 +1,121 @@
-import Image from "next/image";
+import Image from 'next/image';
+import { useTheme } from './ThemeProvider';
+import { AngelBackgrounds, DemonBackgrounds } from '@/Backgrounds';
+import { useAtomValue } from 'jotai';
+import { atom } from 'jotai';
+import { useEffect, useState } from 'react';
+import { ProgressBar, Slider } from '@/components/AmbianceDialog/AmbianceDialog';
+import { Diamond } from '@/components/svgs/Diamond';
+
+export const currentBackgroundIndexAtom = atom(0);
+
+export function CurrentBackgroundMobile({ currentBackground }: FrameProps) {
+    const [loading, setLoading] = useState(true);
+    const [imageUrl, setUrl] = useState<string | undefined>(undefined);
+
+    useEffect(() => {
+        setLoading(true);
+        if (imageUrl) {
+            setTimeout(() => {
+                setUrl(currentBackground);
+            }, 300);
+        } else {
+            setUrl(currentBackground);
+        }
+    }, [currentBackground])
+
+    return (
+        <div className="relative w-full h-[75dvh]">
+            <img
+                key={imageUrl}
+                src={imageUrl}
+                alt="background banner"
+                height={1000}
+                width={1800}
+                className="object-cover w-full h-[75dvh]"
+                loading='lazy'
+                style={{ opacity: loading ? 0 : 1 }}
+                onLoad={() => setLoading(false)}
+            />
+
+            {loading && (
+                <div className="absolute inset-0 flex items-center justify-center bg-[var(--color-background)]">
+                    <Diamond height={32} width={24} />
+                </div>
+            )}
+        </div>
+    );
+}
 
 type FrameProps = {
     currentBackground: string;
 };
 
 export default function Frame({ currentBackground }: FrameProps) {
-    return (
-        <div className="w-full max-w-3/4 aspect-[872/511]">
-            <div className="relative w-full h-full">
-                <div className="absolute inset-0 p-[2.87%]">
-                    <div className="relative w-full h-full">
-                        <Image
-                            key={currentBackground}
-                            src={currentBackground}
-                            alt="background"
-                            fill
-                            className="object-contain"
-                        />
-                    </div>
-                </div>
+    const [loading, setLoading] = useState(true);
+    const [imageUrl, setUrl] = useState<string | undefined>(undefined);
 
-                <div className="absolute inset-0 pointer-events-none">
-                    <Image
-                        src="/assets/frame.svg"
-                        alt="frame"
-                        fill
-                        className="object-contain"
-                    />
-                </div>
+    useEffect(() => {
+        setLoading(true);
+        if (imageUrl) {
+            setTimeout(() => {
+                setUrl(currentBackground);
+            }, 300);
+        } else {
+            setUrl(currentBackground);
+        }
+    }, [currentBackground])
+
+    return (
+        <div className="inset-0  relative" style={{
+            height: "100%",
+            width: "auto",
+            maxWidth: "100%",
+            objectFit: "contain",
+            display: 'flex',
+            aspectRatio: "calc(872/511)"
+        }}>
+
+            <img
+                src={imageUrl}
+                alt="background"
+                style={{
+                    width: "calc(100% - (2 * 2.87%))", maxWidth: "100%", objectFit: "contain", margin: "2.87%", opacity: loading ? 0 : 1,
+                    position: "relative", zIndex: 2
+                }}
+                onLoad={() => {
+                    setLoading(false);
+                }}
+            />
+
+            <div style={{
+                backgroundColor: "var(--color-background)",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                position: "absolute",
+                left: "2.87%",
+                top: "50%",
+                width: "calc(100% - (2 * 2.87%))",
+                aspectRatio: "calc(872/511)",
+                transform: "translate(0, -50%)",
+                zIndex: 1
+
+            }}>
+                <Diamond height={32} width={24} />
             </div>
+
+
+
+            <Image
+                src={`/assets/frame.svg`}
+                alt="frame"
+                fill
+                className="object-contain absolute inset-0 pointer-events-none z-10"
+                loading='eager'
+                data-demon="border"
+            />
         </div>
+
     );
 }

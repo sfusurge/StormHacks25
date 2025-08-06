@@ -1,4 +1,4 @@
-export const calmMusicLibrary = [
+export const calmMusicLibrary: MusicItem[] = [
     //Calm music
     { title: "Never Meant", artist: "American Football", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/american_football_never_meant.mp3" },
     { title: "Improvisation", artist: "Anthi Bozoviti", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/anthi_bozoviti_improvisation.mp3" },
@@ -6,12 +6,12 @@ export const calmMusicLibrary = [
     { title: "Strobe", artist: "deadmau5", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/deadmau5_strobe.mp3" },
     { title: "Ancient Memories", artist: "Derek Bell", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/derek_bell_ancient_memories.mp3" },
     { title: "Sugar, We're Goin Down", artist: "Fall Out Boy", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/fall_out_boy_sugar_were_going_down.mp3" },
-    { title: "Pluto’s Promise", artist: "G. Sancristoforo & T. Koumartzis", file: "/audio/Calm Music/giorgio_sancristoforo_and_theodore_koumartzis_plutos_promise.mp3" },
+    { title: "Pluto’s Promise", artist: "G. Sancristoforo & T. Koumartzis", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/giorgio_sancristoforo_and_theodore_koumartzis_plutos_promise.mp3" },
     { title: "Lullaby", artist: "Giorgio Sancristoforo", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/giorgio_sancristoforo_lullaby.mp3" },
     { title: "Piccolo Notturno", artist: "Giorgio Sancristoforo", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/giorgio_sancristoforo_piccolo_notturno.mp3" },
     { title: "Ohio Is for Lovers", artist: "Hawthorne Heights", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/hawthorne_heights_ohio_is_for_lovers.mp3" },
     { title: "BCKYRD", artist: "Hot Mulligan", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/hot_mulligan_bckyrd.mp3" },
-    { title: "Hot Mulligan (feat. Mark Hoppus)", artist: "Hot Mulligan", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/hot_mulligan_featuring_mark_hoppus.mp3" },
+    { title: "Featuring Mark Hoppus", artist: "Hot Mulligan", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/hot_mulligan_featuring_mark_hoppus.mp3" },
     { title: "Breaking the Habit", artist: "Linkin Park", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/linkin_park_breaking_the_habit.mp3" },
     { title: "In the End", artist: "Linkin Park", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/linkin_park_in_the_end.mp3" },
     { title: "Apollo’s Lyre", artist: "Michael Levy", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/michael_levy_apollos_lyre.mp3" },
@@ -20,9 +20,21 @@ export const calmMusicLibrary = [
     { title: "The Serenity of Sentience", artist: "Michael Levy", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/michael_levy_the_serentity_of_sentience.mp3" },
     { title: "The Barbiton (Lyre of Sappho)", artist: "Seikilo", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/seikilo_the_barbiton_lyre_of_sappho.mp3" },
     { title: "With You, Friends", artist: "Skrillex", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/skrillex_with_you_friends.mp3" },
+    { title: "Let Go", artist: "BTS", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/bts_let_go.mp3" },
+    { title: "Ditto", artist: "NewJeans", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/newjeans_ditto.mp3" },
+    { title: "Flower Dance", artist: "Faker", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/faker_flower_dance.mp3" },
+    { title: "Glimpse of Us", artist: "Birru", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/birru_glimpse_of_us.mp3" },
+    { title: "Unravel", artist: "TK from Ling Tosite Sigure", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/tokyo_ghoul_unravel.mp3" },
+    { title: "Fly Me to the Moon", artist: "Frank Sinatra", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/frank_sinatra_fly_me_to_the_moon.mp3" },
+    { title: "Here I Am", artist: "Boys Planet", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/boys_planet_here_i_am.mp3" },
+    { title: "From the Start", artist: "Laufey", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/laufey_from_the_start.mp3" },
+    { title: "Half Moon", artist: "DEAN", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/dean_d_half_moon.mp3" },
+    { title: "Sway", artist: "Michael Bublé", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/michael_bubly_sway.mp3" },
+    { title: "Everything Goes On", artist: "Porter Robinson", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/porter_robinson_everything_goes_on.mp3" },
+    { title: "Shelter", artist: "Porter Robinson & Madeon", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/porter_robinson_and_madeon_shelter.mp3" },
 ];
 
-export const epicMusicLibrary = [
+export const epicMusicLibrary: MusicItem[] = [
     { title: "EPIC: The Musical – The Circe Saga", artist: "EPIC: The Musical", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Epic%20Music/epic_the_musical%20_the_circe_saga.mp3" },
     { title: "EPIC: The Musical – The Cyclops Saga", artist: "EPIC: The Musical", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Epic%20Music/epic_the_musical%20_the_cyclops_saga.mp3" },
     { title: "EPIC: The Musical – The Ithaca Saga", artist: "EPIC: The Musical", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Epic%20Music/epic_the_musical%20_the_ithaca_saga.mp3" },
@@ -34,7 +46,7 @@ export const epicMusicLibrary = [
     { title: "Apple Seed", artist: "Hiroyuki Sawano", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Epic%20Music/hiroyuki_sawano_apple_seed.mp3" }
 ]
 
-export const specialMusicLibrary = [
+export const specialMusicLibrary: MusicItem[] = [
     { title: "I NEED U", artist: "BTS", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Special%20Music/bts_i_need_u.mp3" },
     { title: "Minecraft", artist: "C418", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Special%20Music/c418_minecraft.mp3" },
     { title: "Cherry Wine", artist: "grentperez", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Special%20Music/grentperez_cherry_wine.mp3" },
@@ -47,7 +59,7 @@ export const specialMusicLibrary = [
     { title: "Blue", artist: "yung kai", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Special%20Music/yung_kai_blue.mp3" },
 ]
 
-export const ambianceLibrary = [
+export const ambianceLibrary: MusicItem[] = [
     //Ambiance
     { title: "Heavy Rain", artist: "Ambience", file: "/audio/Ambiance/heavy_rain.mp3" },
     { title: "Light Rain", artist: "Ambience", file: "/audio/Ambiance/light_rain.mp3" },
@@ -61,3 +73,9 @@ export const ambianceLibrary = [
     { title: "Museum Café", artist: "Ambience", file: "/audio/Ambiance/museum_cafe.mp3" },
 ];
 
+
+export interface MusicItem {
+    title: string,
+    artist: string,
+    file: string
+}

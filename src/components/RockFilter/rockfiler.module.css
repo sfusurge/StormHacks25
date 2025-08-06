@@ -1,0 +1,17 @@
+
+.rockerFilter {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    background-image: url("/assets/noise.jpg");
+
+    mix-blend-mode: overlay;
+    opacity:1;
+    filter: brightness(1.2);
+    user-select: none;
+    pointer-events: none;
+}

@@ -1,14 +1,18 @@
 import Image from 'next/image';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { toast } from 'sonner';
+import HoverEffectButton from './HoverEffectButton';
 
 export default function EmailSignup() {
     const [email, setEmail] = useState('');
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [success, setSuccess] = useState<boolean | null>(null);
 
+
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        console.log("in submit");
 
         try {
             setIsLoading(true);
@@ -20,7 +24,6 @@ export default function EmailSignup() {
             console.log(res);
 
             if (res.status === 200) {
-                // clear email
                 setEmail('');
                 setSuccess(true);
             } else {
@@ -53,14 +56,15 @@ export default function EmailSignup() {
     return (
         <form
             onSubmit={handleSubmit}
-            className="max-w-md mx-auto bg-[#06060599] border border-[#372F2F] py-4 flex items-center justify-between rounded-md mt-8"
+            className="w-full sm:max-w-md bg-backgroundalt border border-borderalt py-4 sm:py-2 flex items-center duration-300 ease-out"
         >
             <div className="relative left-2.5 w-5 h-5 mr-4">
                 <Image
-                    src="/assets/mail.svg"
-                    alt="frame"
+                    src={`/assets/mail.svg`}
+                    alt="email icon"
                     fill
-                    className="object-contain stroke-[#8A6F6A] stroke-1"
+                    className="object-contain"
+                    data-demon="primary"
                 />
             </div>
             <input
@@ -70,21 +74,19 @@ export default function EmailSignup() {
                 value={email}
                 onChange={handleChange}
                 required
-                className="bg-transparent pr-4 placeholder-[#8A6F6A] text-white focus:outline-none"
+                className="bg-transparent flex-1 w-full text-base sm:text-xs italic font-semibold pl-1 pr-6 placeholder-primary text-main focus:outline-none [&::placeholder]:not-italic [&::placeholder]:font-normal"
                 disabled={isLoading}
             />
-            <button
-                type="submit"
-                className="relative right-2.5 w-10 h-5 border-[#8A6F6A] border-[0.735px] hover:opacity-80 transition-opacity duration-200"
-                disabled={isLoading}
-            >
+            <HoverEffectButton type='submit' className='relative flex items-center justify-center right-4 w-10 h-7  cursor-pointer  hover:opacity-80 transition-opacity duration-200'>
                 <Image
-                    src="/assets/submit.svg"
-                    alt="arrow"
-                    fill
+                    src={`/assets/submit.svg`}
+                    alt="submit arrow"
+                    width={24}
+                    height={16}
+                    data-demon="primary"
                     className="object-contain"
                 />
-            </button>
+            </HoverEffectButton>
         </form>
     );
 }

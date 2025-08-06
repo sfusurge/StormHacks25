@@ -1,20 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: [
-        './src/app/**/*.{js,ts,jsx,tsx}',
-    ],
+    content: ['./src/app/**/*.{js,ts,jsx,tsx}'],
     theme: {
         extend: {
             colors: {
-                primary: '#A7928E',
-                accent: '#574E49',
-                background: '#161414D9'
+                header:"var(--color-header)",
+                textalt: "var(--color-special-text)",
+                primary: "var(--color-primary)",
+                border: "var(--color-border)",
+                borderalt: "var(--color-border2)",
+                background: "var(--color-background)",
+                backgroundalt: "var(--color-background2)"
             },
             mixBlendMode: {
                 'color-dodge': 'color-dodge',
             },
             fontFamily: {
-                catriel: 'var(--font-catriel)'
+                catriel: 'var(--font-catriel)',
             },
         },
         screens: {
@@ -32,7 +34,7 @@ module.exports = {
                 '.mix-blend-color-dodge': {
                     'mix-blend-mode': 'color-dodge',
                 },
-            })
-        }
+            });
+        },
     ],
-}
+};
