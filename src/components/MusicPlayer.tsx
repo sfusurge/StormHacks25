@@ -93,10 +93,10 @@ export default function Controls() {
         }
 
         const audio = audioRef.current;
+        if (audio.src !== currentTrack.file && !initialPlay) {
+            audio.src = currentTrack.file;
+        }
         if (isPlaying && audio.paused) {
-            if (audio.src !== currentTrack.file) {
-                audio.src = currentTrack.file;
-            }
 
             const playPromise = audio.play();
             if (playPromise !== undefined) {
@@ -110,7 +110,7 @@ export default function Controls() {
         } else if (!isPlaying && !audio.paused) {
             audio.pause();
         }
-    }, [currentTrack.file, currentTrackIndex, isPlaying, isLoading]);
+    }, [currentTrack.file, currentTrackIndex, isPlaying, isLoading, initialPlay]);
 
     useEffect(() => {
         if (audioRef.current) {
@@ -122,17 +122,14 @@ export default function Controls() {
         if (!audioRef.current) return;
 
         setIsLoading(true);
+        setInitial(false);
 
         if (isPlaying) {
             audioRef.current.pause();
             setIsPlaying(false);
         } else {
-            if (initialPlay) {
-                setInitial(false);
-                audioRef.current.src = currentTrack.file;
-            }
-
             try {
+                audioRef.current.src = currentTrack.file;
                 await audioRef.current.play();
                 setIsPlaying(true);
             } catch (error) {
@@ -140,7 +137,6 @@ export default function Controls() {
                 setIsPlaying(false);
             }
         }
-
         setIsLoading(false);
     };
 
@@ -149,6 +145,7 @@ export default function Controls() {
         const nextIndex = (currentTrackIndex + 1) % musicLib.length;
         setCurrentTrackIndex(nextIndex);
         setIsPlaying(true);
+        setInitial(false);
         setIsLoading(false);
     };
 
@@ -160,6 +157,7 @@ export default function Controls() {
                 : currentTrackIndex - 1;
         setCurrentTrackIndex(prevIndex);
         setIsPlaying(true);
+        setInitial(false);
         setIsLoading(false);
     };
 
