@@ -20,7 +20,6 @@ export const calmMusicLibrary: MusicItem[] = [
     { title: "The Serenity of Sentience", artist: "Michael Levy", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/michael_levy_the_serentity_of_sentience.mp3" },
     { title: "The Barbiton (Lyre of Sappho)", artist: "Seikilo", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/seikilo_the_barbiton_lyre_of_sappho.mp3" },
     { title: "With You, Friends", artist: "Skrillex", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/skrillex_with_you_friends.mp3" },
-    { title: "Summer", artist: "Joe Hisaishi", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/hisaishi_joe_summer_and_yiruma_river_flows_in_you_and_chopin_nocturne_op9_no2_.mp3" },
     { title: "Let Go", artist: "BTS", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/bts_let_go.mp3" },
     { title: "Ditto", artist: "NewJeans", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/newjeans_ditto.mp3" },
     { title: "Flower Dance", artist: "Faker", file: "https://x9bwborp6xanhdzl.public.blob.vercel-storage.com/Calm%20Music/faker_flower_dance.mp3" },
