@@ -4,7 +4,7 @@ import './globals.css';
 import { Toaster } from 'sonner';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { TimerController } from '@/components/Timer/TimerController';
-import Script from 'next/script';
+
 import { GA } from '@/app/GA';
 
 export const metadata: Metadata = {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     openGraph: {
         images: [
             {
-                url: "https://stormhacks.com/stormhacks25_preview.jpg"
+                url: "https://stormhacks.com/stormhacks25_preview.webp"
             }
         ]
     }

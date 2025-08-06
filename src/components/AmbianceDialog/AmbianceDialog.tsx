@@ -38,6 +38,7 @@ export function AmbianceDialog({ onClose, mobileMode = false, mobileTriggerButto
                                 fontStyle: "italic",
                                 alignItems: "center",
                                 gap: "0.5rem",
+                                color: "var(--color-special-text)"
                             }}
                         >
                             <span style={{ width: "4.5rem" }}>{name}</span>

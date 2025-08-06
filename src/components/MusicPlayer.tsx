@@ -93,12 +93,11 @@ export default function Controls() {
         }
 
         const audio = audioRef.current;
-
-        if (audio.src !== currentTrack.file) {
-            audio.src = currentTrack.file;
-        }
-
         if (isPlaying && audio.paused) {
+            if (audio.src !== currentTrack.file) {
+                audio.src = currentTrack.file;
+            }
+
             const playPromise = audio.play();
             if (playPromise !== undefined) {
                 playPromise
@@ -272,7 +271,7 @@ export default function Controls() {
             </div>
 
             {/* DESKTOP */}
-             <div className="hidden sm:block mt-auto mb-4 relative border border-border bg-background sm:w-[80%] xl:w-[50%] h-[43px]">
+            <div className="hidden sm:block mt-auto mb-4 relative border border-border bg-background sm:w-[80%] xl:w-[50%] h-[43px]">
                 <RockFilter />
                 <div className="flex justify-between h-full">
                     <div className="flex flex-row gap-2">

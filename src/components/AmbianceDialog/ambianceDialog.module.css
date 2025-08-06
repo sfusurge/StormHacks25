@@ -1,7 +1,7 @@
 
 
 .header {
-    color: var(--color-main);
+    color: var(--color-header);
     font-style: italic;
     font-size: 14px;
 }
@@ -60,7 +60,6 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-
     width: 100%;
 }
 
