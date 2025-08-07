@@ -10,7 +10,6 @@ import {
     type MusicItem,
 } from '@/audioLibrary';
 import HoverEffectButton from '@/components/HoverEffectButton';
-import { useTheme } from './ThemeProvider';
 import { atom, useAtom, useAtomValue } from 'jotai';
 import { BlockPatternVertical } from './svgs/BlockPatternVertical';
 import { Diamond } from './svgs/Diamond';
@@ -71,9 +70,10 @@ export default function Controls() {
     const musicLib = useAtomValue(musicLibAtom);
     const [currentTrackIndex, setCurrentTrackIndex] = useAtom(trackIndexAtom);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isLoading, setIsLoading] = useState(false); 
     const audioRef = useRef<HTMLAudioElement>(null);
-
     const masterVolume = useAtomValue(masterVolumeAtom);
+    const isInitialPlayRef = useRef(true); 
 
     const currentTrack = useMemo(
         () => musicLib[currentTrackIndex],
@@ -84,85 +84,61 @@ export default function Controls() {
         [currentTrack],
     );
 
-    const [initialPlay, setInitial] = useState(true);
-    const [isLoading, setIsLoading] = useState(false);
-
     useEffect(() => {
-        if (!audioRef.current || isLoading) {
-            return;
-        }
+        if (!audioRef.current) return;
+        
+        if (isInitialPlayRef.current) return;
 
-        const audio = audioRef.current;
-        if (audio.src !== currentTrack.file && !initialPlay) {
-            audio.src = currentTrack.file;
-        }
-        if (isPlaying && audio.paused) {
+        audioRef.current.src = currentTrack.file;
+        const playPromise = audioRef.current.play();
 
-            const playPromise = audio.play();
-            if (playPromise !== undefined) {
-                playPromise
-                    .then(() => setIsPlaying(true))
-                    .catch((error) => {
-                        console.log('Play interrupted:', error);
-                        setIsPlaying(false);
-                    });
-            }
-        } else if (!isPlaying && !audio.paused) {
-            audio.pause();
+        if (playPromise !== undefined) {
+            playPromise.catch(error => {
+                console.error("Audio play failed:", error);
+                setIsPlaying(false); 
+            });
         }
-    }, [currentTrack.file, currentTrackIndex, isPlaying, isLoading, initialPlay]);
+    }, [currentTrack, currentTrackIndex]); 
 
     useEffect(() => {
         if (audioRef.current) {
             audioRef.current.volume = masterVolume;
         }
-    }, [masterVolume])
+    }, [masterVolume]);
 
-    const togglePlayPause = async () => {
-        if (!audioRef.current) return;
+    const togglePlayPause = () => {
+        if (!audioRef.current || isLoading) return;
 
-        setIsLoading(true);
-        setInitial(false);
+        if (isInitialPlayRef.current) {
+            isInitialPlayRef.current = false;
+            audioRef.current.src = currentTrack.file;
+        }
 
         if (isPlaying) {
             audioRef.current.pause();
-            setIsPlaying(false);
         } else {
-            try {
-                audioRef.current.src = currentTrack.file;
-                await audioRef.current.play();
-                setIsPlaying(true);
-            } catch (error) {
-                console.log('Play failed:', error);
-                setIsPlaying(false);
-            }
+            audioRef.current.play().catch(error => console.error("Audio play failed on toggle:", error));
         }
-        setIsLoading(false);
     };
 
     const playNext = () => {
-        setIsLoading(true);
+        if (isLoading) return; 
+        isInitialPlayRef.current = false;
         const nextIndex = (currentTrackIndex + 1) % musicLib.length;
         setCurrentTrackIndex(nextIndex);
-        setIsPlaying(true);
-        setInitial(false);
-        setIsLoading(false);
     };
 
     const playPrevious = () => {
-        setIsLoading(true);
+        if (isLoading) return; 
+        isInitialPlayRef.current = false;
         const prevIndex =
             currentTrackIndex === 0
                 ? musicLib.length - 1
                 : currentTrackIndex - 1;
         setCurrentTrackIndex(prevIndex);
-        setIsPlaying(true);
-        setInitial(false);
-        setIsLoading(false);
     };
 
     const handleAudioEnded = () => {
-        setIsPlaying(false);
         playNext();
     };
 
@@ -176,6 +152,10 @@ export default function Controls() {
                 onEnded={handleAudioEnded}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
+                onLoadStart={() => setIsLoading(true)}
+                onCanPlayThrough={() => setIsLoading(false)}
+                onStalled={() => setIsLoading(false)}
+                onError={() => setIsLoading(false)}
             />
 
             {/* MOBILE */}
